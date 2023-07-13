@@ -17,10 +17,16 @@ class Project(object):
             path = f'https://jogl-backend.herokuapp.com/api/programs/11/projects?items=1&page={self.index}'
             response = session.get(path)
             if response.status_code != 200:
-                return ConnectionError
+                return None
             else:
                 with open(f'./joglwrapper/cached_results/{self.index}.json', 'w', encoding='utf-8') as f:
                     json.dump(response.json(), f)
 
         with open(f'./joglwrapper/cached_results/{self.index}.json', 'r', encoding='utf-8') as f:
-            return json.loads(f.read())
+            response = json.loads(f.read())
+
+            if len(response["projects"]) == 0:
+                return None
+            else:
+                return response
+            
