@@ -1,0 +1,20 @@
+project
+- id
+- title, short_title
+- description
+- status
+- is_private
+- is_reviewed
+- follower count
+- needs count
+- posts count
+- users
+  - first name, last name
+  - bio
+  - owner t/f
+  - admin t/f
+- documents
+- challenges
+- geoloc
+- member count
+- skills "keywords"

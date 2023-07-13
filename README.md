@@ -1,2 +1,0 @@
-# epidemium-research
- 
