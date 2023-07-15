@@ -2,7 +2,9 @@ from joglwrapper import Reader
 from joglwrapper import Project
 
 reader = Reader()
-response = reader.info(1)
+reader.get(1)
+reader.get(5)
+
 
 project = Project(1)
 print(project.id)

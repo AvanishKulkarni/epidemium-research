@@ -8,9 +8,9 @@ class Reader(object):
         pass
         
 
-    def info(self, index):
+    def get(self, index):
 
-        if os.path.exists(f'./joglwrapper/cached_results/{index}.json'):
+        if os.path.exists(f'./joglwrapper/cached_projects/{index}.json'):
             print("cached result exists")
         else:
             print("no cache, regenerating")
@@ -21,7 +21,13 @@ class Reader(object):
                 print("no data found in API")
                 return None
             else:
-                with open(f'./joglwrapper/cached_results/{index}.json', 'w', encoding='utf-8') as f:
+                with open(f'./joglwrapper/cached_projects/{index}.json', 'w', encoding='utf-8') as f:
                     json.dump(response.json(), f)
-                    return response.json()
+
+                for user in response.json()["projects"][0]["users_sm"]:
+                    with open(f'./joglwrapper/cached_users/{user["id"]}.json', 'w', encoding='utf-8') as f:
+                        json.dump(user, f)
+                
+                
+
             
