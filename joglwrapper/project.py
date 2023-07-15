@@ -1,27 +1,48 @@
 import os
 import json
-from . import session
 
 class Project(object):
-    
+
     def __init__(self, index):
+
+        with open(f'./joglwrapper/cached_results/{index}.json', 'r') as f:
+            print(f"opened project at index {index}")
+
+            self.raw_dict = json.loads(f.read())['projects'][0]
+
         self.index = index
-        
+        self.id = self.raw_dict['id']
+        self.title = self.raw_dict['title']
+        self.short_title = self.raw_dict['short_title']
+        self.short_description = self.raw_dict['short_description']
+        self.status = self.raw_dict['status']
+        self.grant_info = self.raw_dict['grant_info']
+        self.is_private = self.raw_dict['is_private']
+        self.is_reviewed = self.raw_dict['is_reviewed']
+        self.follower_count = self.raw_dict['follower_count']
+        self.needs_count = self.raw_dict['needs_count']
+        self.posts_count = self.raw_dict['posts_count']
+        self.reviews_count = self.raw_dict['reviews_count']
+        self.members_count = self.raw_dict['members_count']
+    
 
-    def info(self):
 
-        if os.path.exists(f'./joglwrapper/cached_results/{self.index}.json'):
-            print("cached result exists")
-        else:
-            print("no cache, regenerating")
-            path = f'https://jogl-backend.herokuapp.com/api/programs/11/projects?items=1&page={self.index}'
-            response = session.get(path)
-
-            if response.status_code != 200 or (len(response.json()["projects"]) == 0):
-                print("no data found in API")
-                return None
-            else:
-                with open(f'./joglwrapper/cached_results/{self.index}.json', 'w', encoding='utf-8') as f:
-                    json.dump(response.json(), f)
-                    return response.json()
-            
+# - id
+# - title, short_title
+# - description
+# - status
+# - is_private
+# - is_reviewed
+# - follower count
+# - needs count
+# - posts count
+# - users
+#   - first name, last name
+#   - bio
+#   - owner t/f
+#   - admin t/f
+# - documents
+# - challenges
+# - geoloc
+# - member count
+# - skills "keywords"
