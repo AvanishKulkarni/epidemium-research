@@ -13,20 +13,15 @@ class Project(object):
         if os.path.exists(f'./joglwrapper/cached_results/{self.index}.json'):
             print("cached result exists")
         else:
-            print("no cache")
+            print("no cache, regenerating")
             path = f'https://jogl-backend.herokuapp.com/api/programs/11/projects?items=1&page={self.index}'
             response = session.get(path)
-            if response.status_code != 200:
+
+            if response.status_code != 200 or (len(response.json()["projects"]) == 0):
+                print("no data found in API")
                 return None
             else:
                 with open(f'./joglwrapper/cached_results/{self.index}.json', 'w', encoding='utf-8') as f:
                     json.dump(response.json(), f)
-
-        with open(f'./joglwrapper/cached_results/{self.index}.json', 'r', encoding='utf-8') as f:
-            response = json.loads(f.read())
-
-            if len(response["projects"]) == 0:
-                return None
-            else:
-                return response
+                    return response.json()
             
