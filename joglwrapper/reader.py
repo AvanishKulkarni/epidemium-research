@@ -9,27 +9,53 @@ class Reader(object):
         pass
         
 
-    def get(self, index):
+    def get_project(self, index):
 
         if os.path.exists(f'./joglwrapper/cache/{index}/info.json'):
             print("cached result exists")
         else:
             print("no cache, regenerating")
-            path = f'https://jogl-backend.herokuapp.com/api/programs/11/projects?items=1&page={index}'
-            response = session.get(path)
+            project_info_path = f'https://jogl-backend.herokuapp.com/api/programs/11/projects?items=1&page={index}'
+            project_info_response = session.get(project_info_path)
 
-            if response.status_code != 200 or (len(response.json()["projects"]) == 0):
-                print("no data found in API")
+            if project_info_response.status_code != 200 or (len(project_info_response.json()["projects"]) == 0):
+                print("no project data found in API")
                 return None
             else:
                 Path(f'./joglwrapper/cache/{index}/users/').mkdir(parents=True, exist_ok=True)
                 with open(f'./joglwrapper/cache/{index}/info.json', 'w', encoding='utf-8') as f:
-                    json.dump(response.json(), f)
+                    json.dump(project_info_response.json(), f)
 
-                for user in response.json()["projects"][0]["users_sm"]:
-                    with open(f'./joglwrapper/cache/{index}/users/{user["id"]}.json', 'w', encoding='utf-8') as f:
-                        json.dump(user, f)
+    def get_members(self, index):
+        
+        is_empty = not any(Path(f'./joglwrapper/cache/{index}/users/').iterdir())
+
+        print(f"is_empty: {is_empty}")
+
+        with open(f'./joglwrapper/cache/{index}/info.json', 'r', encoding='utf-8') as f:
+            id = json.loads(f.read())['projects'][0]['id']
+
+        if (is_empty):
+            member_path = f'https://jogl-backend.herokuapp.com/api/projects/{id}/members'
+            member_response = session.get(member_path)
+
+            if member_response.status_code == 200:
+                Path(f'./joglwrapper/cache/{index}/users/').mkdir(parents=True, exist_ok=True)
+                member_json = member_response.json()
+
+                for member in member_json['members']:
+                    with open(f'./joglwrapper/cache/{index}/users/{member["id"]}.json', 'w', encoding='utf-8') as f:
+                        json.dump(member, f)
+
+                    print(member['id'])
                 
-                
+
+
+            else:
+                print('no member data found in API')
+                return None
+
+        else:   
+            print('cached result exists')                
 
             
