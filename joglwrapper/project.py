@@ -1,11 +1,13 @@
 import os
 import json
 
-class Project(object):
+class Project:
 
     def __init__(self, index):
 
-        with open(f'./joglwrapper/cached_projects/{index}.json', 'r', encoding='utf-8') as f:
+        self.path = f'./joglwrapper/cache/{index}'
+
+        with open(f'{self.path}/info.json', 'r', encoding='utf-8') as f:
             self.raw_dict = json.loads(f.read())['projects'][0]
 
         self.index = index
@@ -26,8 +28,19 @@ class Project(object):
     def get_members(self):
         members = []
 
-        # TODO return a list of member objects with cached data
+        directory = os.fsdecode(f'{self.path}/users/')
+
+        for file in os.listdir(directory):
+            filename = os.fsdecode(file)
+            if filename.endswith(".json"):
+                members.append(Member(os.path.join(directory, filename)))
+            else:
+                continue
+
+        return members
     
+    def get_member(self, id):
+        pass
 
 
 # - id
@@ -50,15 +63,22 @@ class Project(object):
 # - member count
 # - skills "keywords"
 
-class Member():
-    def __init__(self, id):
-        self.id = id
+class Member:
+    def __init__(self, json_file):
+        self.json_file = json_file
 
-        with open(f'./joglwrapper/cached_users/{self.id}.json', 'r', encoding='utf-8') as f:
+        with open(self.json_file) as f:
             self.raw_dict = json.loads(f.read())
 
+        self.id = self.raw_dict['id']
         self.first_name = self.raw_dict['first_name']
         self.last_name = self.raw_dict['last_name']
         self.is_owner = True if self.raw_dict['owner'] == "true" else False
         self.is_admin = True if self.raw_dict['admin'] == "true" else False
         self.is_member = True if self.raw_dict['member'] == "true" else False
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name} (id: {self.id})'
+    
+    def __repr__(self):
+        return f'user_{self.id}'
