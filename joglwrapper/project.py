@@ -61,6 +61,8 @@ class Member:
         self.is_admin = True if self.raw_dict['admin'] == "true" else False
         self.is_member = True if self.raw_dict['member'] == "true" else False
 
+        # TODO implement additonal info from new API endpoint
+
     def __str__(self):
         return f'{self.first_name} {self.last_name} (id: {self.id})'
     
