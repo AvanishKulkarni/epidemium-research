@@ -34,34 +34,18 @@ class Project:
             filename = os.fsdecode(file)
             if filename.endswith(".json"):
                 members.append(Member(os.path.join(directory, filename)))
-            else:
-                continue
 
         return members
     
     def get_member(self, id):
-        pass
+        directory = os.fsdecode(f'{self.path}/users/')
 
+        for file in os.listdir(directory):
+            filename = os.fsdecode(file)
+            if filename == f'{id}.json':
+                return Member(os.path.join(directory, filename))
 
-# - id
-# - title, short_title
-# - description
-# - status
-# - is_private
-# - is_reviewed
-# - follower count
-# - needs count
-# - posts count
-# - users
-#   - first name, last name
-#   - bio
-#   - owner t/f
-#   - admin t/f
-# - documents
-# - challenges
-# - geoloc
-# - member count
-# - skills "keywords"
+        return None
 
 class Member:
     def __init__(self, json_file):
