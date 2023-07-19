@@ -12,7 +12,7 @@ class Reader(object):
     def get_project(self, index):
 
         if os.path.exists(f'./joglwrapper/cache/{index}/info.json'):
-            print("cached result exists")
+            pass
         else:
             print("no cache, regenerating")
             project_info_path = f'https://jogl-backend.herokuapp.com/api/programs/11/projects?items=1&page={index}'
@@ -29,8 +29,6 @@ class Reader(object):
     def get_members(self, index):
         
         is_empty = not any(Path(f'./joglwrapper/cache/{index}/users/').iterdir())
-
-        print(f"is_empty: {is_empty}")
 
         with open(f'./joglwrapper/cache/{index}/info.json', 'r', encoding='utf-8') as f:
             id = json.loads(f.read())['projects'][0]['id']
@@ -53,9 +51,6 @@ class Reader(object):
 
             else:
                 print('no member data found in API')
-                return None
-
-        else:   
-            print('cached result exists')                
+                return None               
 
             
