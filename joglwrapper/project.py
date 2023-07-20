@@ -106,6 +106,42 @@ class Member:
     
     def get_location(self):
         return f"({self.raw_dict['geoloc']['lat']}, {self.raw_dict['geoloc']['lng']})"
+    
+    def get_needs(self):
+        # Refer to reader.py matching function
+        # Write a function here to return a list of "needs" as a dict
+ 
+        return {}
+    
+    def get_proposals(self):
+        # Refer to reader.py matching function
+        # Refer to get_needs() for instructions
+        return {}
+    
+    def get_peer_reviews(self):
+        # Refer to reader.py matching function
+        # Refer to get_needs() for instructions
+        return {}
+    
+    def get_spaces(self):
+        # Refer to reader.py matching function
+        # Refer to get_needs() for instructions
+        return {}
+    
+    def get_programs(self):
+        # Refer to reader.py matching function
+        # Refer to get_needs() for instructions
+        return {}
+
+    def get_challenges(self):
+        # Refer to reader.py matching function
+        # Refer to get_needs() for instructions
+        return {}
+
+    def get_projects(self):
+        # Refer to reader.py matching function
+        # Refer to get_needs() for instructions
+        return {}
 
     def __str__(self):
         return f'{self.first_name} {self.last_name} (id: {self.id})'

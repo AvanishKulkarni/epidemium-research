@@ -3,12 +3,12 @@ from joglwrapper import Project
 from pathlib import Path
 
 reader = Reader()
-reader.get_project(1)
-reader.get_members(1)
-reader.get_project(5)
-reader.get_members(5)
-reader.get_project(3)
-reader.get_members(3)
+reader.save_project(1)
+reader.save_members(1)
+reader.save_project(5)
+reader.save_members(5)
+reader.save_project(3)
+reader.save_members(3)
 
 project = Project(1)
 

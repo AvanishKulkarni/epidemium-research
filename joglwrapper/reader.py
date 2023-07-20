@@ -10,7 +10,7 @@ class Reader(object):
         pass
         
 
-    def get_project(self, index):
+    def save_project(self, index):
         '''Generates and saves information on the project at index'''
 
         if os.path.exists(f'./joglwrapper/cache/{index}/info.json'):
@@ -28,7 +28,7 @@ class Reader(object):
                 with open(f'./joglwrapper/cache/{index}/info.json', 'w', encoding='utf-8') as f:
                     json.dump(project_info_response.json(), f)
 
-    def get_members(self, index):
+    def save_members(self, index):
         '''Generates and saves information on the members in project at index'''
         
         is_empty = not any(Path(f'./joglwrapper/cache/{index}/users/').iterdir())
@@ -54,4 +54,44 @@ class Reader(object):
                 print('no member data found in API')
                 return None               
 
-            
+    def save_member_needs(self, index, member_id):
+        
+        # Needs can be found at the URL below, stored as a JSON file. Replace the 101 with the user ID
+        # https://jogl-backend.herokuapp.com/api/users/101/objects/needs
+        # Use the above functions as a guide if you aren't sure how to do it. 
+        # Basically save everything locally as a JSON, named like {id}_needs in the member folder ./cache/{id}/users/
+        # Then write a matching function in ./joglwrapper/project.py to read it
+        # Test in test.joglwrapper.py
+
+        pass     
+    
+    def save_member_proposals(self, index, member_id):
+        # Proposals can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/proposals
+        # Has a tendency to be empty, but havent checked everything so make sure to check for that
+        # Refer to save_member_needs() function for instructions
+        pass
+
+    def same_member_peer_reviews(self, index, member_id):
+        # Peer Reviews can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/peer_reviews
+        # Refer to save_member_needs() function for instructions
+        pass
+
+    def get_member_spaces(self, index, member_id):
+        # Spaces can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/spaces
+        # Refer to save_member_needs() function for instructions
+        pass
+
+    def save_member_programs(self, index, member_id):
+        # Programs can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/programs
+        # Refer to save_member_needs() function for instructions
+        pass
+
+    def same_member_challenges(self, index, member_id):
+        # Challenges can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/challenges
+        # Refer to save_member_needs() function for instructions
+        pass
+
+    def save_member_projects(self, index, member_id):
+        # Projects can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/projects
+        # Refer to save_member_needs() function for instructions
+        pass
