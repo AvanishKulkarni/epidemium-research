@@ -2,6 +2,7 @@ import os
 import json
 
 class Project:
+    '''Project class to get information on project saved by Reader class'''
 
     def __init__(self, index):
 
@@ -26,6 +27,8 @@ class Project:
         self.members_count = self.raw_dict['members_count']
 
     def get_members(self):
+        '''Get information on all members'''
+        
         members = []
 
         directory = os.fsdecode(f'{self.path}/users/')

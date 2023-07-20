@@ -4,12 +4,14 @@ from pathlib import Path
 from . import session
 
 class Reader(object):
+    '''Reader class to generate and save information from JOGL'''
     
     def __init__(self):
         pass
         
 
     def get_project(self, index):
+        '''Generates and saves information on the project at index'''
 
         if os.path.exists(f'./joglwrapper/cache/{index}/info.json'):
             pass
@@ -27,6 +29,7 @@ class Reader(object):
                     json.dump(project_info_response.json(), f)
 
     def get_members(self, index):
+        '''Generates and saves information on the members in project at index'''
         
         is_empty = not any(Path(f'./joglwrapper/cache/{index}/users/').iterdir())
 
@@ -47,8 +50,6 @@ class Reader(object):
 
                     print(member['id'])
                 
-
-
             else:
                 print('no member data found in API')
                 return None               
