@@ -51,6 +51,7 @@ class Project:
         return None
 
 class Member:
+
     def __init__(self, json_file):
         self.json_file = json_file
 
@@ -109,42 +110,94 @@ class Member:
     
     def get_needs(self):
         # Refer to reader.py matching function
-        # Write a function here to return a list of "needs" as a dict
- 
-        return {}
+        # Write a function here to return a list of Need classes.
+        # The Need class is defined at the bottom of this file. 
+        # Define the Need class to open up the locally saved JSON in __init__, then have instance variables and/or functions to return info for that specific Need
+        # Refer to the JSON to see what data Need actually has
+        return []
     
     def get_proposals(self):
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
-        return {}
+        return []
     
     def get_peer_reviews(self):
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
-        return {}
+        return []
     
     def get_spaces(self):
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
-        return {}
+        return []
     
     def get_programs(self):
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
-        return {}
+        return []
 
     def get_challenges(self):
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
-        return {}
+        return []
 
     def get_projects(self):
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
-        return {}
+        return []
 
     def __str__(self):
         return f'{self.first_name} {self.last_name} (id: {self.id})'
     
     def __repr__(self):
         return f'user_{self.id}'
+    
+
+class Need:
+
+    def __init__(self, json_file):
+        self.json_file = json_file
+
+    # Write functions or assign self variables to retrieve locally stored data
+
+class Proposal:
+
+    def __init__(self, json_file):
+        self.json_file = json_file
+
+    # Write functions or assign self variables to retrieve locally stored data
+
+class PeerReview:
+
+    def __init__(self, json_file):
+        self.json_file = json_file
+
+    # Write functions or assign self variables to retrieve locally stored data
+
+class Space:
+
+    def __init__(self, json_file):
+        self.json_file = json_file
+
+    # Write functions or assign self variables to retrieve locally stored data
+
+class Program:
+
+    def __init__(self, json_file):
+        self.json_file = json_file
+
+    # Write functions or assign self variables to retrieve locally stored data
+
+class Challenges:
+
+    def __init__(self, json_file):
+        self.json_file = json_file
+
+    # Write functions or assign self variables to retrieve locally stored data
+
+class Project:
+
+    def __init__(self, json_file):
+        self.json_file = json_file
+
+    # Write functions or assign self variables to retrieve locally stored data

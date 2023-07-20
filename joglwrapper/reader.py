@@ -56,12 +56,12 @@ class Reader(object):
 
     def save_member_needs(self, index, member_id):
         
-        # Needs can be found at the URL below, stored as a JSON file. Replace the 101 with the user ID
-        # https://jogl-backend.herokuapp.com/api/users/101/objects/needs
+        # Needs can be found at the URL below, stored as a JSON file.
+        # https://jogl-backend.herokuapp.com/api/users/{member_id}/objects/needs
         # Use the above functions as a guide if you aren't sure how to do it. 
         # Basically save everything locally as a JSON, named like {id}_needs in the member folder ./cache/{id}/users/
         # Then write a matching function in ./joglwrapper/project.py to read it
-        # Test in test.joglwrapper.py
+        # Test in test_joglwrapper.py
 
         pass     
     
