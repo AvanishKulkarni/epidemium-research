@@ -114,6 +114,11 @@ class Member:
         # The Need class is defined at the bottom of this file. 
         # Define the Need class to open up the locally saved JSON in __init__, then have instance variables and/or functions to return info for that specific Need
         # Refer to the JSON to see what data Need actually has
+
+        needs_list = []
+
+        
+
         return []
     
     def get_proposals(self):
