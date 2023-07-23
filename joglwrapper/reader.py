@@ -54,16 +54,28 @@ class Reader(object):
                 print('no member data found in API')
                 return None               
 
-    def save_member_needs(self, index, member_id):
+    def save_member_needs(self, index):
+        '''Generates and saves information on all needs under a user's profile'''
         
-        # Needs can be found at the URL below, stored as a JSON file.
-        # https://jogl-backend.herokuapp.com/api/users/{member_id}/objects/needs
-        # Use the above functions as a guide if you aren't sure how to do it. 
-        # Basically save everything locally as a JSON, named like {id}_needs in the member folder ./cache/{id}/users/
-        # Then write a matching function in ./joglwrapper/project.py to read it
-        # Test in test_joglwrapper.py
+        Path(f'./joglwrapper/cache/{index}/users/needs').mkdir(parents=True, exist_ok=True)
+        is_empty = not any(Path(f'./joglwrapper/cache/{index}/users/needs/').iterdir())
+        if not is_empty: 
+            return None
 
-        pass     
+        for member in os.listdir(f'./joglwrapper/cache/{index}/users/'):
+            member = member[:-5]
+
+            needs_path = f"https://jogl-backend.herokuapp.com/api/users/{member}/objects/needs"
+            needs_response = session.get(needs_path)
+
+            if needs_response.status_code == 200:
+                needs_json = needs_response.json()
+
+                if len(needs_json) > 0:
+                    
+                    for need in needs_json:
+                        with open(f'./joglwrapper/cache/{index}/users/needs/{member}_need{need["id"]}.json', 'w', encoding='utf-8') as f:
+                            json.dump(need, f)     
     
     def save_member_proposals(self, index, member_id):
         # Proposals can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/proposals

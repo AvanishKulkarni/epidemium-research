@@ -158,6 +158,33 @@ class Need:
     def __init__(self, json_file):
         self.json_file = json_file
 
+        self.id = json_file['id']
+        self.title = json_file['title']
+        self.content = json_file['content']
+        self.status = json_file['status']
+        self.project_status = json_file['project_status']
+        
+        self.followers = json_file['followers_count']
+        self.members = json_file['members_count']
+        self.saves = json_file['saves_count']
+        self.posts = json_file['posts_count']
+
+        self.is_urgent = True if self.json_file['is_urgent'] == "true" else False
+        self.has_followed = True if self.json_file['has_followed'] == "true" else False
+        self.has_saved = True if self.json_file['has_saved'] == "true" else False
+        self.is_admin = True if self.json_file['is_admin'] == "true" else False
+        self.is_member = True if self.json_file['is_member'] == "true" else False
+        self.is_owner = True if self.json_file['is_owner'] == "true" else False
+
+    def get_members(self):
+        return []
+    
+    def get_skills(self):
+        return []
+    
+    def get_source_projects(self):
+        return []
+
     # Write functions or assign self variables to retrieve locally stored data
 
 class Proposal:
