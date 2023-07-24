@@ -227,7 +227,7 @@ class Challenges:
 
     # Write functions or assign self variables to retrieve locally stored data
 
-class Project:
+class Member_Project:
 
     def __init__(self, json_file):
         self.json_file = json_file
