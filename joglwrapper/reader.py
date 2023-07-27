@@ -34,25 +34,22 @@ class Reader(object):
         is_empty = not any(Path(f'./joglwrapper/cache/{index}/users/').iterdir())
 
         with open(f'./joglwrapper/cache/{index}/info.json', 'r', encoding='utf-8') as f:
-            id = json.loads(f.read())['projects'][0]['id']
+            id_list = []
+            
+            for member in json.loads(f.read())['projects'][0]['users_sm']:
+                id_list.append(member['id'])
 
         if (is_empty):
-            member_path = f'https://jogl-backend.herokuapp.com/api/projects/{id}/members'
-            member_response = session.get(member_path)
 
-            if member_response.status_code == 200:
+            for member in id_list:
+                path = f'https://jogl-backend.herokuapp.com/api/users/{member}/'
+                response = session.get(path)
+
                 Path(f'./joglwrapper/cache/{index}/users/').mkdir(parents=True, exist_ok=True)
-                member_json = member_response.json()
+                member_json = response.json()
 
-                for member in member_json['members']:
-                    with open(f'./joglwrapper/cache/{index}/users/{member["id"]}.json', 'w', encoding='utf-8') as f:
-                        json.dump(member, f)
-
-                    print(member['id'])
-                
-            else:
-                print('no member data found in API')
-                return None               
+                with open(f'./joglwrapper/cache/{index}/users/{member}.json', 'w', encoding='utf-8') as f:
+                    json.dump(member_json, f)         
 
     def save_member_needs(self, index):
         
