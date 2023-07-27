@@ -180,15 +180,14 @@ class Need:
         self.is_admin = True if self.json_file['is_admin'] == "true" else False
         self.is_member = True if self.json_file['is_member'] == "true" else False
         self.is_owner = True if self.json_file['is_owner'] == "true" else False
-
-    def get_members(self):
-        return []
     
     def get_skills(self):
-        return []
-    
-    def get_source_projects(self):
-        return []
+        skills = []
+
+        for skill in self.json_file['skills']:
+            skills.append(skill)
+
+        return skills
     
     def __str__(self):
         return f'Need: {self.title}'
