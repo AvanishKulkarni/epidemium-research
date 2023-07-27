@@ -36,7 +36,7 @@ class Project:
         for file in os.listdir(directory):
             filename = os.fsdecode(file)
             if filename.endswith(".json"):
-                members.append(Member(os.path.join(directory, filename)))
+                members.append(Member(os.path.join(directory, filename), self.index))
 
         return members
     
@@ -46,18 +46,19 @@ class Project:
         for file in os.listdir(directory):
             filename = os.fsdecode(file)
             if filename == f'{id}.json':
-                return Member(os.path.join(directory, filename))
+                return Member(os.path.join(directory, filename), self.index)
 
         return None
 
 class Member:
 
-    def __init__(self, json_file):
+    def __init__(self, json_file, index):
         self.json_file = json_file
 
         with open(self.json_file) as f:
             self.raw_dict = json.loads(f.read())
 
+        self.index = index
         self.id = self.raw_dict['id']
         self.first_name = self.raw_dict['first_name']
         self.last_name = self.raw_dict['last_name']
@@ -111,11 +112,14 @@ class Member:
         # Define the Need class to open up the locally saved JSON in __init__, then have instance variables and/or functions to return info for that specific Need
         # Refer to the JSON to see what data Need actually has
 
+        directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/needs/{self.id}/')
+
         needs_list = []
+        for file in os.listdir(directory):
+            with open(f'./joglwrapper/cache/{self.index}/users/needs/{self.id}/{file}', 'r', encoding='utf-8') as f:
+                needs_list.append(Need(json.loads(f.read())))
 
-        
-
-        return []
+        return needs_list
     
     def get_proposals(self):
         # Refer to reader.py matching function
@@ -185,6 +189,12 @@ class Need:
     
     def get_source_projects(self):
         return []
+    
+    def __str__(self):
+        return f'Need: {self.title}'
+    
+    def __repr__(self):
+        return f'need_{self.id}'
 
     # Write functions or assign self variables to retrieve locally stored data
 

@@ -51,6 +51,7 @@ class Reader(object):
                 with open(f'./joglwrapper/cache/{index}/users/{member}.json', 'w', encoding='utf-8') as f:
                     json.dump(member_json, f)         
 
+    # Completed
     def save_member_needs(self, index):
         '''Generates and saves information on all needs under a user's profile'''
         
@@ -80,7 +81,8 @@ class Reader(object):
                 if len(needs_json) > 0:
                     
                     for need in needs_json:
-                        with open(f'./joglwrapper/cache/{index}/users/needs/{member}_need{need["id"]}.json', 'w', encoding='utf-8') as f:
+                        Path(f'./joglwrapper/cache/{index}/users/needs/{member}/').mkdir(parents=True, exist_ok=True)
+                        with open(f'./joglwrapper/cache/{index}/users/needs/{member}/{need["id"]}.json', 'w', encoding='utf-8') as f:
                             json.dump(need, f)     
     
     def save_member_proposals(self, index):

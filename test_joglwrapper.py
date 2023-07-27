@@ -16,10 +16,5 @@ project = Project(1)
 
 RachelA = project.get_member(671)
 print(RachelA)
-print(RachelA.get_skills())
-print(RachelA.get_interests())
 
-Burgundxyz = project.get_member(896)
-print(Burgundxyz.get_location())
-print(Burgundxyz.get_interests())
-
+print(RachelA.get_needs())
