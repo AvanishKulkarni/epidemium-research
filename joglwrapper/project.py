@@ -66,10 +66,6 @@ class Member:
         self.short_bio = self.raw_dict['short_bio']
         self.affliation = self.raw_dict['affiliation']
 
-        self.is_owner = True if self.raw_dict['owner'] == "true" else False
-        self.is_admin = True if self.raw_dict['admin'] == "true" else False
-        self.is_member = True if self.raw_dict['member'] == "true" else False
-
         self.followers_count = self.raw_dict['stats']['followers_count']
         self.projects_count = self.raw_dict['stats']['projects_count']
         self.spaces_count = self.raw_dict['stats']['spaces_count']
