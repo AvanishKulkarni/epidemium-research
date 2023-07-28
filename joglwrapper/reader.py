@@ -67,7 +67,28 @@ class Reader(object):
         # Proposals can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/proposals
         # Has a tendency to be empty, but havent checked everything so make sure to check for that
         # Refer to save_member_needs() function for instructions
-        pass
+
+        Path(f'./joglwrapper/cache/{index}/users/proposals/').mkdir(parents=True, exist_ok=True)
+        is_empty = not any(Path(f'./joglwrapper/cache/{index}/users/proposals/').iterdir())
+
+        if not is_empty:
+            return None
+        
+        for member in os.listdir(f'./joglwrapper/cache/{index}/users/'):
+            member = member[:-5]
+
+            path = f"https://jogl-backend.herokuapp.com/api/users/{member}/objects/proposals"
+            response = session.get(path)
+
+            if response.status_code == 200:
+                response_json = response.json()
+
+                if len(response_json) > 0:
+                    
+                    for proposal in response_json:
+                        Path(f'./joglwrapper/cache/{index}/users/proposals/{member}/').mkdir(parents=True, exist_ok=True)
+                        with open(f'./joglwrapper/cache/{index}/users/proposals/{member}/{proposal["id"]}.json', 'w', encoding='utf-8') as f:
+                            json.dump(proposal, f) 
 
     def same_member_peer_reviews(self, index):
         # Peer Reviews can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/peer_reviews

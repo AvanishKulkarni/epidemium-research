@@ -36,7 +36,7 @@ class Project:
         for file in os.listdir(directory):
             filename = os.fsdecode(file)
             if filename.endswith(".json"):
-                members.append(Member(os.path.join(directory, filename)))
+                members.append(Member(os.path.join(directory, filename), self.index))
 
         return members
     
@@ -46,18 +46,19 @@ class Project:
         for file in os.listdir(directory):
             filename = os.fsdecode(file)
             if filename == f'{id}.json':
-                return Member(os.path.join(directory, filename))
+                return Member(os.path.join(directory, filename), self.index)
 
         return None
 
 class Member:
 
-    def __init__(self, json_file):
+    def __init__(self, json_file, index):
         self.json_file = json_file
 
         with open(self.json_file) as f:
             self.raw_dict = json.loads(f.read())
 
+        self.index = index
         self.id = self.raw_dict['id']
         self.first_name = self.raw_dict['first_name']
         self.last_name = self.raw_dict['last_name']
@@ -112,10 +113,18 @@ class Member:
         # Refer to the JSON to see what data Need actually has
         return []
     
-    def get_proposals(self):
+    def get_proposals(self, index):
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
-        return []
+        directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/proposals/{self.id}/')
+
+        proposals_list = []
+
+        for file in os.listdir(directory):
+            with open(f'./joglwrapper/cache/{self.index}/users/proposals/{self.id}/{file}', 'r', encoding='utf-8') as f:
+                proposals_list.append(Proposal(json.loads(f.read())))
+
+        return proposals_list
     
     def get_peer_reviews(self):
         # Refer to reader.py matching function
@@ -159,6 +168,30 @@ class Proposal:
 
     def __init__(self, json_file):
         self.json_file = json_file
+
+        self.id = json_file['id']
+        self.title = json_file['title']
+        self.summary = json_file['summary']
+        
+        self.funding = json_file['funding']
+        self.project_id = json_file['project_id']
+        self.peer_review_id = json_file['peer_review_id']
+        self.score = json_file['score']
+
+        self.is_validated = True if self.json_file['is_validated'] == "true" else False
+
+    def get_skills(self):
+        skills = []
+        for skill in self.json_file['skills']:
+            skills.append(skill)
+
+        return skills
+    
+    def __str__(self):
+        return f'Proposal: {self.title}'
+    
+    def __repr__(self):
+        return f'proposal_{self.id}'
 
     # Write functions or assign self variables to retrieve locally stored data
 
