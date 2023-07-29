@@ -51,7 +51,9 @@ class Reader(object):
                 with open(f'./joglwrapper/cache/{index}/users/{member}.json', 'w', encoding='utf-8') as f:
                     json.dump(member_json, f)         
 
+    # Completed
     def save_member_needs(self, index):
+        '''Generates and saves information on all needs under a user's profile'''
         
         # Needs can be found at the URL below, stored as a JSON file.
         # https://jogl-backend.herokuapp.com/api/users/{member_id}/objects/needs
@@ -61,7 +63,27 @@ class Reader(object):
         # Then write a matching function in ./joglwrapper/project.py to read it
         # Test in test_joglwrapper.py
 
-        pass     
+        # Creates initial needs folder
+        Path(f'./joglwrapper/cache/{index}/users/needs').mkdir(parents=True, exist_ok=True)
+        is_empty = not any(Path(f'./joglwrapper/cache/{index}/users/needs/').iterdir())
+        if not is_empty: 
+            return None
+
+        for member in os.listdir(f'./joglwrapper/cache/{index}/users/'):
+            member = member[:-5]
+
+            needs_path = f"https://jogl-backend.herokuapp.com/api/users/{member}/objects/needs"
+            needs_response = session.get(needs_path)
+
+            if needs_response.status_code == 200:
+                needs_json = needs_response.json()
+
+                if len(needs_json) > 0:
+                    
+                    for need in needs_json:
+                        Path(f'./joglwrapper/cache/{index}/users/needs/{member}/').mkdir(parents=True, exist_ok=True)
+                        with open(f'./joglwrapper/cache/{index}/users/needs/{member}/{need["id"]}.json', 'w', encoding='utf-8') as f:
+                            json.dump(need, f)     
     
     def save_member_proposals(self, index):
         # Proposals can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/proposals
