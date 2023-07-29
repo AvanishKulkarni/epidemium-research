@@ -9,8 +9,9 @@ reader.save_project(5)
 reader.save_members(5)
 reader.save_project(3)
 reader.save_members(3)
-
 reader.save_member_needs(1)
+reader.save_member_needs(5)
+reader.save_member_needs(3)
 
 project = Project(1)
 
