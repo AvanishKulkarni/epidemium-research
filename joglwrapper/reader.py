@@ -84,7 +84,19 @@ class Reader(object):
         for member in os.listdir(f'./joglwrapper/cache/{index}/users/'):
             member = member[:-5]
         
-        pass
+        peer_reviews_path = f"https://jogl-backend.herokuapp.com/api/users/{member}/objects/peer_reviews"
+        peer_reviews_response = session.get(peer_reviews_path)
+
+        #Code below not working yet, needs modification and clarification on function
+        if peer_reviews_response.status_code == 200:
+                peer_reviews_json = peer_reviews_response.json()
+
+                if len(peer_reviews_json) > 0:
+                    
+                    for peer_review in peer_reviews_json:
+                        Path(f'./joglwrapper/cache/{index}/users/peer_reviews/{member}/').mkdir(parents=True, exist_ok=True)
+                        with open(f'./joglwrapper/cache/{index}/users/peer_reviews/{member}/{peer_review["id"]}.json', 'w', encoding='utf-8') as f:
+                            json.dump(peer_review, f)
 
     def get_member_spaces(self, index):
         # Spaces can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/spaces
