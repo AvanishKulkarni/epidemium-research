@@ -87,7 +87,7 @@ class Reader(object):
         peer_reviews_path = f"https://jogl-backend.herokuapp.com/api/users/{member}/objects/peer_reviews"
         peer_reviews_response = session.get(peer_reviews_path)
 
-        #Code below not working yet, needs modification and clarification on function
+        #Code might need modification and clarification on function
         if peer_reviews_response.status_code == 200:
                 peer_reviews_json = peer_reviews_response.json()
 
