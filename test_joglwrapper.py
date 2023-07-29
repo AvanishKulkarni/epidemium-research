@@ -17,6 +17,9 @@ project = Project(1)
 
 RachelA = project.get_member(671)
 print(RachelA)
+proposals = RachelA.get_proposals(1)
+print(proposals[0].title)
+
 
 needs = RachelA.get_needs()
 print(needs[0].get_skills())
