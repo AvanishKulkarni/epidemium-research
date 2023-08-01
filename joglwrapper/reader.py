@@ -117,7 +117,7 @@ class Reader(object):
         # Refer to save_member_needs() function for instructions
         pass
 
-    def get_member_spaces(self, index):
+    def save_member_spaces(self, index):
         # Spaces can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/spaces
         # Refer to save_member_needs() function for instructions
         pass
@@ -127,7 +127,7 @@ class Reader(object):
         # Refer to save_member_needs() function for instructions
         pass
 
-    def same_member_challenges(self, index):
+    def save_member_challenges(self, index):
         # Challenges can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/challenges
         # Refer to save_member_needs() function for instructions
         pass
@@ -136,3 +136,15 @@ class Reader(object):
         # Projects can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/projects
         # Refer to save_member_needs() function for instructions
         pass
+
+    def save_all(self):
+
+        for index in range(1, 7):
+            self.save_project(index)
+            self.save_members(index)
+            self.save_member_needs(index)
+            self.save_member_proposals(index)
+            self.save_member_spaces(index)
+            self.save_member_programs(index)
+            self.save_member_challenges(index)
+            self.save_member_projects(index)
