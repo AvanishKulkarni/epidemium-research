@@ -5,7 +5,7 @@ class Project:
     '''Project class to get information on project saved by Reader class'''
 
     def __init__(self, index):
-
+n
         self.path = f'./joglwrapper/cache/{index}'
 
         with open(f'{self.path}/info.json', 'r', encoding='utf-8') as f:
@@ -114,7 +114,6 @@ class Member:
         # The Need class is defined at the bottom of this file. 
         # Define the Need class to open up the locally saved JSON in __init__, then have instance variables and/or functions to return info for that specific Need
         # Refer to the JSON to see what data Need actually has
-        return []
     
     def get_proposals(self):
         # Refer to reader.py matching function
@@ -129,12 +128,22 @@ class Member:
     def get_spaces(self):
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
-        return []
+        directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/spaces/{self.id}/')
+
+        spaces_list = []
+        for file in os.listdir(directory):
+            with open(f'./joglwrapper/cache/{self.index}/users/spaces/{self.id}/{file}', 'r', encoding='utf-8') as f:
+                spaces_list.append(Space(json.loads(f.read())))
+        
+        return spaces_list
     
     def get_programs(self):
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
-        return []
+        
+        
+        
+        return program_list
 
     def get_challenges(self):
         # Refer to reader.py matching function
