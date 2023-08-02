@@ -188,6 +188,26 @@ class Space:
     def __init__(self, json_file):
         self.json_file = json_file
 
+        self.id = json_file['id']
+        self.title = json_file['title']
+
+
+
+
+     def get_skills(self):
+        skills = []
+
+        for skill in self.json_file['skills']:
+            skills.append(skill)
+
+            return skills
+    
+    def __str__(self):
+        return f'Space: {self.title}'
+    
+    def __repr__(self):
+        return f'space_{self.id}'
+    
     # Write functions or assign self variables to retrieve locally stored data
 
 class Program:
