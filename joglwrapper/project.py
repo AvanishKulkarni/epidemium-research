@@ -187,9 +187,15 @@ class Space:
 
         self.id = json_file['id']
         self.title = json_file['title']
-
-
-
+        self.launch = json_file['launch']
+        self.status = json_file['status']
+        self.maturity = json_file['maturity']
+        
+        self.followers = json_file['followers_count']
+        self.members = json_file['members_count']
+        self.saves = json_file['saves_count']
+        self.posts = json_file['posts_count']
+        
 
      def get_skills(self):
         skills = []
@@ -204,9 +210,6 @@ class Space:
     
     def __repr__(self):
         return f'program_{self.id}'
-
-
-
 
     # Write functions or assign self variables to retrieve locally stored data
 
