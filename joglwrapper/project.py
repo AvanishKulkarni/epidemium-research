@@ -190,9 +190,12 @@ class Space:
 
         self.id = json_file['id']
         self.title = json_file['title']
+        self.content = json_file['content']
+        self.activities = json_file['activities']
 
-
-
+        self.needs = json_file['needs']
+        self.members = json_file['members_count']
+        self.maturity = json_file['maturity']
 
      def get_skills(self):
         skills = []
