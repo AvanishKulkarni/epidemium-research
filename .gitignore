@@ -1,6 +1,7 @@
 
 *.json
-*.json
 *.pyc
-*.pyc
+*.csv
 test_joglwrapper.py
+
+

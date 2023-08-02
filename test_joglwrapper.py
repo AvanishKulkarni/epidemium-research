@@ -5,3 +5,6 @@ from pathlib import Path
 
 reader = Reader()
 reader.save_all()
+
+output = Output()
+output.generate_user(671, "test_1")
