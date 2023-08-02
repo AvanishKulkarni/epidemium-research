@@ -134,7 +134,14 @@ class Member:
     def get_programs(self):
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
-        return []
+        directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/programs/{self.id}/')
+
+        programs_list = []
+        for file in os.listdir(directory):
+            with open(f'./joglwrapper/cache/{self.index}/users/programs/{self.id}/{file}', 'r', encoding='utf-8') as f:
+                programs_list.append(Program(json.loads(f.read())))
+        
+        return programs_list
 
     def get_challenges(self):
         # Refer to reader.py matching function
@@ -177,6 +184,29 @@ class Space:
 
     def __init__(self, json_file):
         self.json_file = json_file
+
+        self.id = json_file['id']
+        self.title = json_file['title']
+
+
+
+
+     def get_skills(self):
+        skills = []
+
+        for skill in self.json_file['skills']:
+            skills.append(skill)
+
+            return skills
+    
+    def __str__(self):
+        return f'Program: {self.title}'
+    
+    def __repr__(self):
+        return f'program_{self.id}'
+
+
+
 
     # Write functions or assign self variables to retrieve locally stored data
 
