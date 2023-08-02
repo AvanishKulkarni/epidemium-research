@@ -200,7 +200,7 @@ class Space:
         for skill in self.json_file['skills']:
             skills.append(skill)
 
-            return skills
+        return skills
     
     def __str__(self):
         return f'Space: {self.title}'
