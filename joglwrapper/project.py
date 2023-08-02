@@ -141,10 +141,7 @@ class Member:
     def get_programs(self):
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
-        
-        
-        
-        return program_list
+        return []
 
     def get_challenges(self):
         # Refer to reader.py matching function
