@@ -5,6 +5,7 @@ class Proposal:
 
     def __init__(self, json_file):
         self.json_file = json_file
+        self.type = "Proposal"
 
         self.id = json_file['id']
         self.title = json_file['title']
@@ -36,10 +37,11 @@ class Need:
 
     def __init__(self, json_file):
         self.json_file = json_file
+        self.type = "Need"
 
         self.id = json_file['id']
         self.title = json_file['title']
-        self.content = json_file['content']
+        self.summary = json_file['content']
         self.status = json_file['status']
         self.project_status = json_file['project_status']
         
@@ -75,6 +77,7 @@ class Space:
 
     def __init__(self, json_file):
         self.json_file = json_file
+        self.type = "Space"
 
     # Write functions or assign self variables to retrieve locally stored data
 
@@ -82,6 +85,7 @@ class Program:
 
     def __init__(self, json_file):
         self.json_file = json_file
+        self.type = "Program"
 
     # Write functions or assign self variables to retrieve locally stored data
 
@@ -89,6 +93,7 @@ class Peer_Review:
 
     def __init__(self, json_file):
         self.json_file = json_file
+        self.type = "Peer Review"
 
     # Write functions or assign self variables to retrieve locally stored data
 
@@ -96,6 +101,7 @@ class Member_Project:
 
     def __init__(self, json_file):
         self.json_file = json_file
+        self.type = "Project"
 
     # Write functions or assign self variables to retrieve locally stored data
 
@@ -103,5 +109,6 @@ class Challenge:
 
     def __init__(self, json_file):
         self.json_file = json_file
+        self.type = "Challenge"
 
     # Write functions or assign self variables to retrieve locally stored data

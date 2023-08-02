@@ -74,7 +74,7 @@ class Member:
 
         return needs_list
     
-    def get_proposals(self, index):
+    def get_proposals(self):
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
         directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/proposals/{self.id}/')

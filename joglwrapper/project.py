@@ -29,7 +29,7 @@ class Project:
         self.reviews_count = self.raw_dict['reviews_count']
         self.members_count = self.raw_dict['members_count']
 
-    def get_members(self) -> list -> list:
+    def get_members(self) -> list:
         '''Get information on all members'''
         
         members = []
