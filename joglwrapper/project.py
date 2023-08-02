@@ -194,6 +194,9 @@ class Space:
         self.members = json_file['members_count']
         self.maturity = json_file['maturity']
 
+        self.is_member = True if json_file['is_member'] == "true" else False
+        self.is_admin = True if json_file['is_admin'] == "true" else False
+    
      def get_skills(self):
         skills = []
 
