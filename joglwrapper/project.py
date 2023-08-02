@@ -26,7 +26,7 @@ class Project:
         self.reviews_count = self.raw_dict['reviews_count']
         self.members_count = self.raw_dict['members_count']
 
-    def get_members(self):
+    def get_members(self) -> list:
         '''Get information on all members'''
         
         members = []
@@ -105,7 +105,7 @@ class Member:
     def get_location(self):
         return f"({self.raw_dict['geoloc']['lat']}, {self.raw_dict['geoloc']['lng']})"
     
-    def get_needs(self):
+    def get_needs(self) -> list:
         # Refer to reader.py matching function
         # Write a function here to return a list of Need classes.
         # The Need class is defined at the bottom of this file. 
@@ -121,7 +121,7 @@ class Member:
 
         return needs_list
     
-    def get_proposals(self, index):
+    def get_proposals(self) -> list:
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
         directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/proposals/{self.id}/')
@@ -163,8 +163,7 @@ class Member:
         return f'{self.first_name} {self.last_name} (id: {self.id})'
     
     def __repr__(self):
-        return f'user_{self.id}'
-    
+        return f'user_{self.id}'   
 
 class Need:
 
