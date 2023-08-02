@@ -185,6 +185,13 @@ class Space:
     def __init__(self, json_file):
         self.json_file = json_file
 
+    # Write functions or assign self variables to retrieve locally stored data
+
+class Program:
+
+    def __init__(self, json_file):
+        self.json_file = json_file
+
         self.id = json_file['id']
         self.title = json_file['title']
         self.launch = json_file['launch']
@@ -196,6 +203,8 @@ class Space:
         self.saves = json_file['saves_count']
         self.posts = json_file['posts_count']
         
+        self.is_member = True if json_file['is_member'] == "true" else False
+        self.is_admin = True if json_file['is_admin'] == "true" else False
 
      def get_skills(self):
         skills = []
@@ -210,13 +219,6 @@ class Space:
     
     def __repr__(self):
         return f'program_{self.id}'
-
-    # Write functions or assign self variables to retrieve locally stored data
-
-class Program:
-
-    def __init__(self, json_file):
-        self.json_file = json_file
 
     # Write functions or assign self variables to retrieve locally stored data
 
