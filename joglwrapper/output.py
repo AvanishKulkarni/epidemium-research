@@ -1,5 +1,6 @@
 from pathlib import Path
 import csv
+import re
 from joglwrapper.project import Project
 from joglwrapper.member import Member
 
@@ -7,7 +8,7 @@ from joglwrapper.member import Member
 class Output:
 
     def __init__(self):
-        pass
+        self.cleaner = re.compile('<.*?>')
 
     '''Generates output CSV file with all information about a project'''
     def generate_project(self, index):
@@ -49,7 +50,13 @@ class Output:
 
             for activity in activities:
                 # TODO Clean random code from summaries
-                write_list.append([f"{activity.type}", f"{activity.title}", f"{activity.summary}"])
+
+                unclean_text = activity.summary
+
+                clean_text = re.sub(self.cleaner, '', unclean_text)
+
+
+                write_list.append([f"{activity.type}", f"{activity.title}", f"{clean_text}"])
 
             csvwriter.writerows(write_list)
 
