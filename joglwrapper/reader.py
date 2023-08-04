@@ -85,6 +85,7 @@ class Reader(object):
                         with open(f'./joglwrapper/cache/{index}/users/needs/{member}/{need["id"]}.json', 'w', encoding='utf-8') as f:
                             json.dump(need, f)     
     
+    # Completed
     def save_member_proposals(self, index):
         # Proposals can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/proposals
         # Has a tendency to be empty, but havent checked everything so make sure to check for that

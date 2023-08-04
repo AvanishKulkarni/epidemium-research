@@ -1,15 +1,29 @@
 import os
 import json
 
-class Proposal:
 
+class Activity:
+    
     def __init__(self, json_file):
         self.json_file = json_file
-        self.type = "Proposal"
-
+        
+        self.type = "Unknown Activity"
         self.id = json_file['id']
         self.title = json_file['title']
-        self.summary = json_file['summary']
+
+        self.description = ""
+
+    def __str__(self):
+        return f'Proposal: {self.title}'
+    
+    def __repr__(self):
+        return f'proposal_{self.id}'
+
+class Proposal(Activity):
+
+    def __init__(self, json_file):
+        self.type = "Proposal"
+        self.description = json_file['summary']
         
         self.funding = json_file['funding']
         self.project_id = json_file['project_id']
@@ -24,24 +38,15 @@ class Proposal:
             skills.append(skill)
 
         return skills
-    
-    def __str__(self):
-        return f'Proposal: {self.title}'
-    
-    def __repr__(self):
-        return f'proposal_{self.id}'
 
     # Write functions or assign self variables to retrieve locally stored data
 
-class Need:
+class Need(Activity):
 
     def __init__(self, json_file):
-        self.json_file = json_file
         self.type = "Need"
 
-        self.id = json_file['id']
-        self.title = json_file['title']
-        self.summary = json_file['content']
+        self.description = json_file['content']
         self.status = json_file['status']
         self.project_status = json_file['project_status']
         
@@ -64,51 +69,40 @@ class Need:
             skills.append(skill)
 
         return skills
-    
-    def __str__(self):
-        return f'Need: {self.title}'
-    
-    def __repr__(self):
-        return f'need_{self.id}'
 
     # Write functions or assign self variables to retrieve locally stored data
 
-class Space:
+class Space(Activity):
 
     def __init__(self, json_file):
-        self.json_file = json_file
         self.type = "Space"
 
     # Write functions or assign self variables to retrieve locally stored data
 
-class Program:
+class Program(Activity):
 
     def __init__(self, json_file):
-        self.json_file = json_file
         self.type = "Program"
 
     # Write functions or assign self variables to retrieve locally stored data
 
-class Peer_Review:
+class Peer_Review(Activity):
 
     def __init__(self, json_file):
-        self.json_file = json_file
         self.type = "Peer Review"
 
     # Write functions or assign self variables to retrieve locally stored data
 
-class Member_Project:
+class Member_Project(Activity):
 
     def __init__(self, json_file):
-        self.json_file = json_file
         self.type = "Project"
 
     # Write functions or assign self variables to retrieve locally stored data
 
-class Challenge:
+class Challenge(Activity):
 
     def __init__(self, json_file):
-        self.json_file = json_file
         self.type = "Challenge"
 
     # Write functions or assign self variables to retrieve locally stored data
