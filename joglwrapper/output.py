@@ -34,11 +34,7 @@ class Output:
                 activities += member.get_projects()
                 activities += member.get_challenges()
             except:
-                break
-
-        
-
-            
+                break 
 
         with open(f'./joglwrapper/output/user_{user_id}/{output_name}.csv', 'w', encoding='utf-8', newline='') as f:
             csvwriter = csv.writer(f)
@@ -49,12 +45,10 @@ class Output:
             write_list = []
 
             for activity in activities:
-                # TODO Clean random code from summaries
 
                 unclean_text = activity.summary
 
                 clean_text = re.sub(self.cleaner, '', unclean_text)
-
 
                 write_list.append([f"{activity.type}", f"{activity.title}", f"{clean_text}"])
 
