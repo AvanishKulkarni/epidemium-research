@@ -27,8 +27,6 @@ class Output:
             
             for member in project.get_members():
                 csvwriter.writerow([member.id, f'{member.first_name} {member.last_name}', member.short_bio, member.affiliation])
-            
-
     
     '''Generates output CSV file with all information about a user'''
     def generate_user_activity(self, user_id, output_name):
@@ -70,5 +68,8 @@ class Output:
 
             csvwriter.writerows(write_list)
 
+    def generate_all_users(self, index):
+        for user in (project := Project(index)).get_members():
+            self.generate_user_activity(user.id, f'project_{project.id}_user_{user.id}')
 
 

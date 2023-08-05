@@ -7,5 +7,5 @@ from pathlib import Path
 # reader.save_all()
 
 output = Output()
-output.generate_user_activity(671, "test_1")
 output.generate_project(1, 'test')
+output.generate_all_users(1)
