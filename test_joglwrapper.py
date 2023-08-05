@@ -8,3 +8,4 @@ from pathlib import Path
 
 output = Output()
 output.generate_user_activity(671, "test_1")
+output.generate_project(1, 'test')

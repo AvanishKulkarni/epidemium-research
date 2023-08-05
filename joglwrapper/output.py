@@ -11,8 +11,24 @@ class Output:
         self.cleaner = re.compile('<.*?>')
 
     '''Generates output CSV file with all information about a project'''
-    def generate_project(self, index):
-        pass
+    def generate_project(self, index, output_name):
+        Path(f'./joglwrapper/output/project_{index}/').mkdir(parents=True, exist_ok=True)
+
+        with open(f'./joglwrapper/output/project_{index}/{output_name}.csv', 'w', encoding='utf-8', newline='') as f:
+            csvwriter = csv.writer(f)
+            project = Project(index)
+
+            header = ['title', 'summary']
+
+            csvwriter.writerow(header)
+            csvwriter.writerow([f'{project.title}', f'{project.short_description}'])
+            csvwriter.writerow(['members:'])
+            csvwriter.writerow(['id', 'name', 'bio', 'affiliation'])
+            
+            for member in project.get_members():
+                csvwriter.writerow([member.id, f'{member.first_name} {member.last_name}', member.short_bio, member.affiliation])
+            
+
     
     '''Generates output CSV file with all information about a user'''
     def generate_user_activity(self, user_id, output_name):

@@ -18,7 +18,7 @@ class Member:
         self.nickname = self.raw_dict['nickname']
 
         self.short_bio = self.raw_dict['short_bio']
-        self.affliation = self.raw_dict['affiliation']
+        self.affiliation = self.raw_dict['affiliation']
 
         self.followers_count = self.raw_dict['stats']['followers_count']
         self.projects_count = self.raw_dict['stats']['projects_count']
