@@ -29,7 +29,7 @@ class Output:
                 csvwriter.writerow([member.id, f'{member.first_name} {member.last_name}', member.short_bio, member.affiliation])
     
     '''Generates output CSV file with all information about a user'''
-    def generate_user_activity(self, user_id, output_name):
+    def generate_user(self, user_id, output_name):
         Path(f'./joglwrapper/output/user_{user_id}/').mkdir(parents=True, exist_ok=True)
 
         activities = []
@@ -50,6 +50,8 @@ class Output:
             except:
                 break 
 
+            
+
         with open(f'./joglwrapper/output/user_{user_id}/{output_name}.csv', 'w', encoding='utf-8', newline='') as f:
             csvwriter = csv.writer(f)
 
@@ -68,8 +70,9 @@ class Output:
 
             csvwriter.writerows(write_list)
 
+    '''Generates output CSV files for all users in a project'''
     def generate_all_users(self, index):
         for user in (project := Project(index)).get_members():
-            self.generate_user_activity(user.id, f'project_{project.id}_user_{user.id}')
+            self.generate_user(user.id, f'project_{project.id}_user_{user.id}')
 
 

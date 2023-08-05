@@ -9,3 +9,4 @@ from pathlib import Path
 output = Output()
 output.generate_project(1, 'test')
 output.generate_all_users(1)
+output.generate_user(671, 'test')
