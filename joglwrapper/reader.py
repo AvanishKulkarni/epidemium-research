@@ -9,7 +9,6 @@ class Reader(object):
     def __init__(self):
         pass
         
-
     def save_project(self, index):
         '''Generates and saves information on the project at index'''
 
