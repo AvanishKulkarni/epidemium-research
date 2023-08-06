@@ -128,7 +128,7 @@ class Member:
 
         for file in os.listdir(directory):
             with open(f'./joglwrapper/cache/{self.index}/users/peer_reviews/{self.id}/{file}', 'r', encoding='utf-8') as f:
-                peer_reviews_list.append(Proposal(json.loads(f.read())))
+                peer_reviews_list.append(PeerReview(json.loads(f.read())))
 
         return peer_reviews_list 
     
