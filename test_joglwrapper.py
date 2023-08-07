@@ -17,8 +17,8 @@ print(RachelA)
 print(RachelA.get_skills())
 print(RachelA.get_interests())
 
-peer_reviews = RachelA.get_peer_reviews(1)
-print(peer_reviews)
+peer_reviews = RachelA.get_peer_reviews()
+#print(peer_reviews)
 
 Burgundxyz = project.get_member(896)
 print(Burgundxyz.get_location())

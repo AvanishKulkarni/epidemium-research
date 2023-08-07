@@ -121,7 +121,7 @@ class Member:
         # Refer to get_needs() for instructions
         return []
     
-    def get_peer_reviews(self, index):
+    def get_peer_reviews(self):
         directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/peer_reviews/{self.id}/')
 
         peer_reviews_list = []
