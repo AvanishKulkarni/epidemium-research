@@ -88,9 +88,15 @@ class Member:
         return proposals_list
     
     def get_peer_reviews(self):
-        # Refer to reader.py matching function
-        # Refer to get_needs() for instructions
-        return []
+        directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/peer_reviews/{self.id}/')
+
+        peer_reviews_list = []
+
+        for file in os.listdir(directory):
+            with open(f'./joglwrapper/cache/{self.index}/users/peer_reviews/{self.id}/{file}', 'r', encoding='utf-8') as f:
+                peer_reviews_list.append(PeerReview(json.loads(f.read())))
+
+        return peer_reviews_list
     
     def get_spaces(self):
         # Refer to reader.py matching function
