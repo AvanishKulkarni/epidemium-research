@@ -10,6 +10,9 @@ reader.save_members(5)
 reader.save_project(3)
 reader.save_members(3)
 
+reader.save_member_peer_reviews(1)
+
+
 project = Project(1)
 
 RachelA = project.get_member(671)
@@ -19,8 +22,8 @@ print(RachelA.get_interests())
 
 peer_reviews = RachelA.get_peer_reviews()
 #print(peer_reviews)
-
+'''
 Burgundxyz = project.get_member(896)
 print(Burgundxyz.get_location())
 print(Burgundxyz.get_interests())
-
+'''
