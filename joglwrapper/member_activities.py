@@ -73,6 +73,7 @@ class Need(Activity):
 class Space(Activity):
 
     def __init__(self, json_file):
+        Activity.__init__(self, json_file)
         self.type = "Space"
 
     # Write functions or assign self variables to retrieve locally stored data
@@ -80,6 +81,7 @@ class Space(Activity):
 class Program(Activity):
 
     def __init__(self, json_file):
+        Activity.__init__(self, json_file)
         self.type = "Program"
 
     # Write functions or assign self variables to retrieve locally stored data
@@ -87,6 +89,7 @@ class Program(Activity):
 class Peer_Review(Activity):
 
     def __init__(self, json_file):
+        Activity.__init__(self, json_file)
         self.type = "Peer Review"
 
     # Write functions or assign self variables to retrieve locally stored data
@@ -94,6 +97,7 @@ class Peer_Review(Activity):
 class Member_Project(Activity):
 
     def __init__(self, json_file):
+        Activity.__init__(self, json_file)
         self.type = "Project"
 
     # Write functions or assign self variables to retrieve locally stored data
@@ -101,6 +105,7 @@ class Member_Project(Activity):
 class Challenge(Activity):
 
     def __init__(self, json_file):
+        Activity.__init__(self, json_file)
         self.type = "Challenge"
 
     # Write functions or assign self variables to retrieve locally stored data
