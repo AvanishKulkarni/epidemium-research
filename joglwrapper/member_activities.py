@@ -13,17 +13,13 @@ class Activity:
 
         self.description = ""
 
-    def __str__(self):
-        return f'Proposal: {self.title}'
-    
-    def __repr__(self):
-        return f'proposal_{self.id}'
-
 class Proposal(Activity):
 
     def __init__(self, json_file):
+        Activity.__init__(self, json_file)
+
         self.type = "Proposal"
-        self.description = json_file['summary']
+        self.summary = json_file['summary']
         
         self.funding = json_file['funding']
         self.project_id = json_file['project_id']
@@ -44,9 +40,11 @@ class Proposal(Activity):
 class Need(Activity):
 
     def __init__(self, json_file):
+        Activity.__init__(self, json_file)
+
         self.type = "Need"
 
-        self.description = json_file['content']
+        self.summary = json_file['content']
         self.status = json_file['status']
         self.project_status = json_file['project_status']
         
@@ -55,12 +53,12 @@ class Need(Activity):
         self.saves = json_file['saves_count']
         self.posts = json_file['posts_count']
 
-        self.is_urgent = True if self.json_file['is_urgent'] == "true" else False
-        self.has_followed = True if self.json_file['has_followed'] == "true" else False
-        self.has_saved = True if self.json_file['has_saved'] == "true" else False
-        self.is_admin = True if self.json_file['is_admin'] == "true" else False
-        self.is_member = True if self.json_file['is_member'] == "true" else False
-        self.is_owner = True if self.json_file['is_owner'] == "true" else False
+        self.is_urgent = True if json_file['is_urgent'] == "true" else False
+        self.has_followed = True if json_file['has_followed'] == "true" else False
+        self.has_saved = True if json_file['has_saved'] == "true" else False
+        self.is_admin = True if json_file['is_admin'] == "true" else False
+        self.is_member = True if json_file['is_member'] == "true" else False
+        self.is_owner = True if json_file['is_owner'] == "true" else False
     
     def get_skills(self):
         skills = []

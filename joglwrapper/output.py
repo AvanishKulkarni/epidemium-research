@@ -39,19 +39,44 @@ class Output:
 
             member = cache_reader.get_member(user_id)
 
-            try: 
+            try:
                 activities += member.get_proposals() 
+            except:
+                pass
+
+            try:
                 activities += member.get_needs() 
+            except:
+                pass
+
+            try:
                 activities += member.get_spaces()
+            except:
+                pass
+
+            try:
                 activities += member.get_programs()
+            except:
+                pass
+
+            try:
                 activities += member.get_peer_reviews()
+            except:
+                pass
+
+            try:
                 activities += member.get_projects()
+            except:
+                pass
+
+            try:
                 activities += member.get_challenges()
             except:
-                break 
+                pass
 
-            
-
+            if len(activities) > 0:
+                break
+               
         with open(f'./joglwrapper/output/user_{user_id}/{output_name}.csv', 'w', encoding='utf-8', newline='') as f:
             csvwriter = csv.writer(f)
 
