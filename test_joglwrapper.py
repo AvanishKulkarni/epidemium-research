@@ -11,6 +11,7 @@ reader.save_members(5)
 reader.save_project(3)
 reader.save_members(3)
 
+reader.save_member_proposals(1)
 reader.save_member_peer_reviews(1)
 
 # reader.save_all()
