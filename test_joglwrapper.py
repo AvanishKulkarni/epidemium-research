@@ -14,8 +14,16 @@ reader.save_members(3)
 reader.save_member_proposals(1)
 reader.save_member_peer_reviews(1)
 
-# reader.save_all()
+project1 = Project(1)
 
+PascalD = project1.get_member(7938)
+RachelA = project1.get_member(671)
+
+proposals = RachelA.get_proposals()
+
+
+
+# reader.save_all()
 
 '''
 output = Output()
@@ -26,4 +34,4 @@ output.generate_all_users(1)
 
 output.generate_user(671, 'test')
 '''
-project = Project(1)
+
