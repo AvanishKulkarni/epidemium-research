@@ -112,7 +112,7 @@ class Reader(object):
                         with open(f'./joglwrapper/cache/{index}/users/proposals/{member}/{proposal["id"]}.json', 'w', encoding='utf-8') as f:
                             json.dump(proposal, f) 
 
-    def same_member_peer_reviews(self, index):
+    def save_member_peer_reviews(self, index):
         # Peer Reviews can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/peer_reviews
         # Refer to save_member_needs() function for instructions
         pass
@@ -140,7 +140,6 @@ class Reader(object):
         challenges_path = f"https://jogl-backend.herokuapp.com/api/users/{member}/objects/challenges"
         challenges_response = session.get(challenges_path)
 
-        #Code might need modification and clarification on function
         if challenges_response.status_code == 200:
                 challenges_json = challenges_response.json()
 
