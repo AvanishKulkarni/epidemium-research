@@ -128,9 +128,28 @@ class Reader(object):
         pass
 
     def save_member_challenges(self, index):
-        # Challenges can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/challenges
-        # Refer to save_member_needs() function for instructions
-        pass
+        Path(f'./joglwrapper/cache/{index}/users/challenges').mkdir(parents=True, exist_ok=True)
+        is_empty = not any(Path(f'./joglwrapper/cache/{index}/users/challenges/').iterdir())
+
+        if not is_empty:
+            return None
+        
+        for member in os.listdir(f'./joglwrapper/cache/{index}/users/'):
+            member = member[:-5]
+        
+        challenges_path = f"https://jogl-backend.herokuapp.com/api/users/{member}/objects/challenges"
+        challenges_response = session.get(challenges_path)
+
+        #Code might need modification and clarification on function
+        if challenges_response.status_code == 200:
+                challenges_json = challenges_response.json()
+
+                if len(challenges_json) > 0:
+                    
+                    for challenge in challenges_json:
+                        Path(f'./joglwrapper/cache/{index}/users/challenges/{member}/').mkdir(parents=True, exist_ok=True)
+                        with open(f'./joglwrapper/cache/{index}/users/challenges/{member}/{challenge["id"]}.json', 'w', encoding='utf-8') as f:
+                            json.dump(challenge, f)
 
     def save_member_projects(self, index):
         # Projects can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/projects
