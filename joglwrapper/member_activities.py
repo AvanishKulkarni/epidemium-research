@@ -118,7 +118,8 @@ class Member_Project:
         self.short_bio = json_file['short_bio']
         self.followers_count = json_file['followers_count']
 
-        # geoloc?
+        
+        
         #self.is_looking_for_collaborators = True if self.json_file['is_looking_for_collaborators'] == "true" else False
         self.is_private = json_file['is_private']
         self.is_reviewed = json_file['is_reviewed']
@@ -141,7 +142,11 @@ class Member_Project:
         #self.is_pending = True if self.json_file['is_pending'] == "true" else False
         #self.is_reviewer = True if self.json_file['is_reviewer'] == "true" else False
         #self.has_valid_proposal = True if self.json_file['has_valid_proposal'] == "true" else False --> is_validated?
-        
+
+
+    # geoloc
+    def get_location(self):
+        return f"({self.raw_dict['geoloc']['lat']}, {self.raw_dict['geoloc']['lng']})"
  
     def get_skills(self):
         skills = []
