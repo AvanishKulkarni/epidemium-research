@@ -65,27 +65,13 @@ class Member:
         # Define the Need class to open up the locally saved JSON in __init__, then have instance variables and/or functions to return info for that specific Need
         # Refer to the JSON to see what data Need actually has
 
-        directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/needs/{self.id}/')
-
-        needs_list = []
-        for file in os.listdir(directory):
-            with open(f'./joglwrapper/cache/{self.index}/users/needs/{self.id}/{file}', 'r', encoding='utf-8') as f:
-                needs_list.append(Need(json.loads(f.read())))
-
-        return needs_list
+        pass
     
     def get_proposals(self):
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
-        directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/proposals/{self.id}/')
-
-        proposals_list = []
-
-        for file in os.listdir(directory):
-            with open(f'./joglwrapper/cache/{self.index}/users/proposals/{self.id}/{file}', 'r', encoding='utf-8') as f:
-                proposals_list.append(Proposal(json.loads(f.read())))
-
-        return proposals_list
+        
+        pass
     
     def get_peer_reviews(self):
         # Refer to reader.py matching function
