@@ -97,7 +97,41 @@ class Member_Project:
     def __init__(self, json_file):
         self.json_file = json_file
 
+    self.id = json_file['id]
+    self.created_at = json_file['created_at']
+    self.feed_id = json_file['feed_id']
+    self.followers = json_file['followers_count']
+
+    self.is_looking_for_collaborators = True if self.json_file['is_looking_for_collaborators'] == "true" else False
+    self.is_private = True if self.json_file['is_private'] == "true" else False
+    self.is_reviewed = True if self.json_file['is_reviewed'] == "true" else False
+
+    self.maturity = json_file['maturity']
+    self.members = json_file['members_count']
+    self.needs = json_file['needs_count']
+    self.posts = json_file['posts_count']
+    self.reviews = json_file['reviews_count']
+    self.saves = json_file['saves_count']
+
+    self.short_description = json_file['short_description']
+    self.short_title = json_file['short_title']
+
+    self.status = json_file['status']
+    self.title = json_file['title']
+    self.updated_at = json_file['updated_at'] 
+
+    self.has_followed = True if self.json_file['has_followed'] == "true" else False
+    self.has_saved = True if self.json_file['has_saved'] == "true" else False
+    self.is_admin = True if self.json_file['is_admin'] == "true" else False
+    self.is_member = True if self.json_file['is_member'] == "true" else False
+    self.is_owner = True if self.json_file['is_owner'] == "true" else False
+    self.is_pending = True if self.json_file['is_pending'] == "true" else False
+    self.is_reviewer = True if self.json_file['is_reviewer'] == "true" else False
+    self.has_valid_proposal = True if self.json_file['has_valid_proposal'] == "true" else False
+    
+
     # Write functions or assign self variables to retrieve locally stored data
+
 
 class Challenge:
 
