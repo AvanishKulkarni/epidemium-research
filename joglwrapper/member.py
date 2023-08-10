@@ -102,7 +102,7 @@ class Member:
 
         for file in os.listdir(directory):
             with open(f'./joglwrapper/cache/{self.index}/users/projects/{self.id}/{file}', 'r', encoding='utf-8') as f:
-                projects_list.append(Project(json.loads(f.read())))
+                projects_list.append(Member_Project(json.loads(f.read())))
 
         return projects_list
 

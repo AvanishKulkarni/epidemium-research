@@ -99,7 +99,7 @@ class Member_Project:
 
     # Write functions or assign self variables to retrieve locally stored data
 
-        self.id = json_file['id]
+        self.id = json_file['id']
         self.title = json_file['title'] 
         
         self.short_description = json_file['short_description']
