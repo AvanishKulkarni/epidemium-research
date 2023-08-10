@@ -8,7 +8,7 @@ class Proposal:
 
         self.id = json_file['id']
         self.title = json_file['title']
-        self.summary = json_file['summary']
+        self.summary = json_file['summary'] 
         
         self.funding = json_file['funding']
         self.project_id = json_file['project_id']
