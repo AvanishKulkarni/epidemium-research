@@ -68,11 +68,12 @@ class Member:
         directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/needs/{self.id}/')
 
         needs_list = []
-        for file in os.listdir(directory):
-            with open(f'./joglwrapper/cache/{self.index}/users/needs/{self.id}/{file}', 'r', encoding='utf-8') as f:
-                needs_list.append(Need(json.loads(f.read())))
-
-        return needs_list
+        try:
+            for file in os.listdir(directory):
+                with open(f'./joglwrapper/cache/{self.index}/users/needs/{self.id}/{file}', 'r', encoding='utf-8') as f:
+                    needs_list.append(Need(json.loads(f.read())))
+        finally:
+            return needs_list
     
     def get_proposals(self):
         # Refer to reader.py matching function
@@ -81,11 +82,12 @@ class Member:
 
         proposals_list = []
 
-        for file in os.listdir(directory):
-            with open(f'./joglwrapper/cache/{self.index}/users/proposals/{self.id}/{file}', 'r', encoding='utf-8') as f:
-                proposals_list.append(Proposal(json.loads(f.read())))
-
-        return proposals_list
+        try:
+            for file in os.listdir(directory):
+                with open(f'./joglwrapper/cache/{self.index}/users/proposals/{self.id}/{file}', 'r', encoding='utf-8') as f:
+                    proposals_list.append(Proposal(json.loads(f.read())))
+        finally:
+            return proposals_list
     
     def get_peer_reviews(self):
         # Refer to reader.py matching function

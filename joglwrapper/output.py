@@ -100,4 +100,43 @@ class Output:
         for user in (project := Project(index)).get_members():
             self.generate_user(user.id, f'project_{project.id}_user_{user.id}')
 
+    def generate_meta(self):
+        Path(f'./joglwrapper/output/').mkdir(parents=True, exist_ok=True)
 
+        with open(f'./joglwrapper/output/meta.csv', 'w', encoding='utf-8', newline='') as f:
+            csvwriter = csv.writer(f)
+
+            for index in range(1, 7):
+                project = Project(index)
+
+                csvwriter.writerow([f'project id: {project.id}'])
+
+                row_2 = [
+                    'member_id',
+                    'proposal',
+                    'need',
+                    'space',
+                    'program',
+                    'peer_review',
+                    'project',
+                    'challenge',
+                ]
+
+                csvwriter.writerow(row_2)
+
+                for member in project.get_members():
+                    csv_row = [
+                        member.id,
+                        len(member.get_proposals()),
+                        len(member.get_needs()),
+                        len(member.get_spaces()),
+                        len(member.get_programs()),
+                        len(member.get_peer_reviews()),
+                        len(member.get_projects()),
+                        len(member.get_challenges()),
+                    ]
+
+                    csvwriter.writerow(csv_row)
+
+                csvwriter.writerow([])
+                    
