@@ -23,3 +23,4 @@ print(proposals[0].title)
 
 needs = RachelA.get_needs()
 print(needs[0].get_skills())
+
