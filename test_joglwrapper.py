@@ -5,8 +5,8 @@ from pathlib import Path
 
 from pyvis.network import Network
 
-net = Network(height='500px', width='500px')
-net.barnes_hut()
+net = Network(height='1000px', width='1000px')
+net.barnes_hut(spring_length=1)
 
 # reader = Reader()
 # reader.save_all()
@@ -27,10 +27,22 @@ net.barnes_hut()
 for index in range(1, 7):
     project = Project(index)
 
-    net.add_node(index, label='Project 1')
+    net.add_node(index, 
+                 label='Project 1',
+                 color='#5d97f5',
+                 mass=4,
+                 shape='box',
+                 value=100
+                 )
 
     for member in project.get_members():
-        net.add_node(member.id, label=f'{str(member)}')
+        net.add_node(n_id=member.id, 
+                     label=f'{str(member)}',
+                     color='#FFFFFF',
+                     shape='diamond'
+                     )
         net.add_edge(member.id, index)
 
+
+net.show_buttons()
 net.show('test.html', notebook=False)

@@ -32,8 +32,8 @@
         <style type="text/css">
 
              #mynetwork {
-                 width: 500px;
-                 height: 500px;
+                 width: 1000px;
+                 height: 1000px;
                  background-color: #ffffff;
                  border: 1px solid lightgray;
                  position: relative;
@@ -42,6 +42,12 @@
 
              
 
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
              
 
              
@@ -57,6 +63,8 @@
         </div>
 
         
+        
+            <div id="config"></div>
         
 
         <script type="text/javascript">
@@ -88,7 +96,7 @@
                   
 
                   // parsing and collecting nodes and edges from the python
-                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": 1, "label": "Project 1", "shape": "dot"}, {"color": "#97c2fc", "id": 275450, "label": "Edouard Debonneuil (id: 275450)", "shape": "dot"}, {"color": "#97c2fc", "id": 275497, "label": "wafa bouzouita (id: 275497)", "shape": "dot"}, {"color": "#97c2fc", "id": 562, "label": "\u00d2scar Garibo (id: 562)", "shape": "dot"}, {"color": "#97c2fc", "id": 5662, "label": "sriram dayalan (id: 5662)", "shape": "dot"}, {"color": "#97c2fc", "id": 671, "label": "Rachel Aronoff (id: 671)", "shape": "dot"}, {"color": "#97c2fc", "id": 896, "label": "Vikramaditya Chhapwale (id: 896)", "shape": "dot"}, {"color": "#97c2fc", "id": 2, "label": "Project 1", "shape": "dot"}, {"color": "#97c2fc", "id": 275501, "label": "Baptiste Maingret (id: 275501)", "shape": "dot"}, {"color": "#97c2fc", "id": 275503, "label": "Pol Sans (id: 275503)", "shape": "dot"}, {"color": "#97c2fc", "id": 6775, "label": "Sampath Rapuri (id: 6775)", "shape": "dot"}, {"color": "#97c2fc", "id": 7802, "label": "Bastien Rance (id: 7802)", "shape": "dot"}, {"color": "#97c2fc", "id": 826, "label": "Jose L. Flores-Guerrero (id: 826)", "shape": "dot"}, {"color": "#97c2fc", "id": 3, "label": "Project 1", "shape": "dot"}, {"color": "#97c2fc", "id": 275357, "label": "Eren Unlu (id: 275357)", "shape": "dot"}, {"color": "#97c2fc", "id": 275575, "label": "Thibaud Ishacian (id: 275575)", "shape": "dot"}, {"color": "#97c2fc", "id": 275613, "label": "Axel Boucher (id: 275613)", "shape": "dot"}, {"color": "#97c2fc", "id": 7807, "label": "Louis KEYSER (id: 7807)", "shape": "dot"}, {"color": "#97c2fc", "id": 4, "label": "Project 1", "shape": "dot"}, {"color": "#97c2fc", "id": 275512, "label": "Omar Osman (id: 275512)", "shape": "dot"}, {"color": "#97c2fc", "id": 275789, "label": "Lina Faik (id: 275789)", "shape": "dot"}, {"color": "#97c2fc", "id": 6149, "label": "Asma M (id: 6149)", "shape": "dot"}, {"color": "#97c2fc", "id": 5, "label": "Project 1", "shape": "dot"}, {"color": "#97c2fc", "id": 275353, "label": "Sebastien de Longeaux (id: 275353)", "shape": "dot"}, {"color": "#97c2fc", "id": 4973, "label": "Benjamin Akinmoyeje (id: 4973)", "shape": "dot"}, {"color": "#97c2fc", "id": 7938, "label": "Pascal Deschaseaux (id: 7938)", "shape": "dot"}, {"color": "#97c2fc", "id": 6, "label": "Project 1", "shape": "dot"}, {"color": "#97c2fc", "id": 275352, "label": "Guillaume Schaller (id: 275352)", "shape": "dot"}, {"color": "#97c2fc", "id": 275843, "label": "Elodie Quandalle (id: 275843)", "shape": "dot"}, {"color": "#97c2fc", "id": 7827, "label": "Johan Jublanc (id: 7827)", "shape": "dot"}, {"color": "#97c2fc", "id": 7987, "label": "jamila rejeb (id: 7987)", "shape": "dot"}, {"color": "#97c2fc", "id": 8119, "label": "Stephane D (id: 8119)", "shape": "dot"}, {"color": "#97c2fc", "id": 8120, "label": "Ahmed Dhif (id: 8120)", "shape": "dot"}]);
+                  nodes = new vis.DataSet([{"color": "#5d97f5", "id": 1, "label": "Project 1", "mass": 4, "shape": "box", "value": 100}, {"color": "#FFFFFF", "id": 275450, "label": "Edouard Debonneuil (id: 275450)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 275497, "label": "wafa bouzouita (id: 275497)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 562, "label": "\u00d2scar Garibo (id: 562)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 5662, "label": "sriram dayalan (id: 5662)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 671, "label": "Rachel Aronoff (id: 671)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 896, "label": "Vikramaditya Chhapwale (id: 896)", "shape": "diamond"}, {"color": "#5d97f5", "id": 2, "label": "Project 1", "mass": 4, "shape": "box", "value": 100}, {"color": "#FFFFFF", "id": 275501, "label": "Baptiste Maingret (id: 275501)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 275503, "label": "Pol Sans (id: 275503)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 6775, "label": "Sampath Rapuri (id: 6775)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 7802, "label": "Bastien Rance (id: 7802)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 826, "label": "Jose L. Flores-Guerrero (id: 826)", "shape": "diamond"}, {"color": "#5d97f5", "id": 3, "label": "Project 1", "mass": 4, "shape": "box", "value": 100}, {"color": "#FFFFFF", "id": 275357, "label": "Eren Unlu (id: 275357)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 275575, "label": "Thibaud Ishacian (id: 275575)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 275613, "label": "Axel Boucher (id: 275613)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 7807, "label": "Louis KEYSER (id: 7807)", "shape": "diamond"}, {"color": "#5d97f5", "id": 4, "label": "Project 1", "mass": 4, "shape": "box", "value": 100}, {"color": "#FFFFFF", "id": 275512, "label": "Omar Osman (id: 275512)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 275789, "label": "Lina Faik (id: 275789)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 6149, "label": "Asma M (id: 6149)", "shape": "diamond"}, {"color": "#5d97f5", "id": 5, "label": "Project 1", "mass": 4, "shape": "box", "value": 100}, {"color": "#FFFFFF", "id": 275353, "label": "Sebastien de Longeaux (id: 275353)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 4973, "label": "Benjamin Akinmoyeje (id: 4973)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 7938, "label": "Pascal Deschaseaux (id: 7938)", "shape": "diamond"}, {"color": "#5d97f5", "id": 6, "label": "Project 1", "mass": 4, "shape": "box", "value": 100}, {"color": "#FFFFFF", "id": 275352, "label": "Guillaume Schaller (id: 275352)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 275843, "label": "Elodie Quandalle (id: 275843)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 7827, "label": "Johan Jublanc (id: 7827)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 7987, "label": "jamila rejeb (id: 7987)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 8119, "label": "Stephane D (id: 8119)", "shape": "diamond"}, {"color": "#FFFFFF", "id": 8120, "label": "Ahmed Dhif (id: 8120)", "shape": "diamond"}]);
                   edges = new vis.DataSet([{"from": 275450, "to": 1}, {"from": 275497, "to": 1}, {"from": 562, "to": 1}, {"from": 5662, "to": 1}, {"from": 671, "to": 1}, {"from": 896, "to": 1}, {"from": 275450, "to": 2}, {"from": 275501, "to": 2}, {"from": 275503, "to": 2}, {"from": 6775, "to": 2}, {"from": 7802, "to": 2}, {"from": 826, "to": 2}, {"from": 275357, "to": 3}, {"from": 275575, "to": 3}, {"from": 275613, "to": 3}, {"from": 7807, "to": 3}, {"from": 275497, "to": 4}, {"from": 275512, "to": 4}, {"from": 275789, "to": 4}, {"from": 6149, "to": 4}, {"from": 6775, "to": 4}, {"from": 896, "to": 4}, {"from": 275353, "to": 5}, {"from": 275497, "to": 5}, {"from": 4973, "to": 5}, {"from": 671, "to": 5}, {"from": 7802, "to": 5}, {"from": 7938, "to": 5}, {"from": 275352, "to": 6}, {"from": 275843, "to": 6}, {"from": 7827, "to": 6}, {"from": 7987, "to": 6}, {"from": 8119, "to": 6}, {"from": 8120, "to": 6}]);
 
                   nodeColors = {};
@@ -102,7 +110,7 @@
 
                   var options = {
     "configure": {
-        "enabled": false
+        "enabled": true
     },
     "edges": {
         "color": {
@@ -125,7 +133,7 @@
             "damping": 0.09,
             "gravitationalConstant": -80000,
             "springConstant": 0.001,
-            "springLength": 250
+            "springLength": 1
         },
         "enabled": true,
         "stabilization": {
@@ -141,6 +149,10 @@
                   
 
 
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
                   
 
                   network = new vis.Network(container, data, options);
