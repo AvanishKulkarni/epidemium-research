@@ -43,6 +43,7 @@ for index in range(1, 7):
                      )
         net.add_edge(member.id, index)
 
+        for activity in member.get_activities():
+            pass
 
-net.show_buttons()
 net.show('test.html', notebook=False)

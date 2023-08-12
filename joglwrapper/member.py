@@ -24,10 +24,10 @@ class Member:
         self.projects_count = self.raw_dict['stats']['projects_count']
         self.spaces_count = self.raw_dict['stats']['spaces_count']
 
-    def get_skills(self):
+    def get_skills(self) -> dict:
         return self.raw_dict['skills']
     
-    def get_interests(self):
+    def get_interests(self) -> list[str]:
         skills = {
             1 : "No Poverty",
             2 : "Zero Hunger",
@@ -55,10 +55,10 @@ class Member:
         
         return interests
     
-    def get_location(self):
+    def get_location(self) -> str:
         return f"({self.raw_dict['geoloc']['lat']}, {self.raw_dict['geoloc']['lng']})"
     
-    def get_needs(self):
+    def get_needs(self) -> list[Need]:
         # Refer to reader.py matching function
         # Write a function here to return a list of Need classes.
         # The Need class is defined at the bottom of this file. 
@@ -75,7 +75,7 @@ class Member:
         finally:
             return needs_list
     
-    def get_proposals(self):
+    def get_proposals(self) -> list[Proposal]:
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
         directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/proposals/{self.id}/')
@@ -89,27 +89,27 @@ class Member:
         finally:
             return proposals_list
     
-    def get_peer_reviews(self):
+    def get_peer_reviews(self) -> list[Peer_Review]:
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
         return []
     
-    def get_spaces(self):
+    def get_spaces(self) -> list[Space]:
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
         return []
     
-    def get_programs(self):
+    def get_programs(self) -> list[Program]:
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
         return []
 
-    def get_challenges(self):
+    def get_challenges(self) -> list[Challenge]:
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
         return []
 
-    def get_projects(self):
+    def get_projects(self) -> list[Member_Project]:
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
         directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/projects/{self.id}/')
@@ -122,8 +122,23 @@ class Member:
 
         return projects_list
 
-    def __str__(self):
+    def get_activities(self, include_projects=False) -> list[Activity]:
+        activity_list = []
+
+        activity_list += self.get_needs()
+        activity_list += self.get_proposals()
+        activity_list += self.get_peer_reviews()
+        activity_list += self.get_spaces()
+        activity_list += self.get_programs()
+        activity_list += self.get_challenges()
+
+        if include_projects:
+            activity_list += self.get_projects()
+
+        return activity_list
+
+    def __str__(self) -> str:
         return f'{self.first_name} {self.last_name} (id: {self.id})'
     
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f'user_{self.id}'
