@@ -1,7 +1,6 @@
 import os
 import json
 
-
 class Activity:
     
     def __init__(self, json_file):
@@ -96,7 +95,7 @@ class Member_Project(Activity):
         self.id = json_file['id']
         self.title = json_file['title'] 
         
-        self.short_description = json_file['short_description']
+        self.summary = json_file['short_description']
         self.short_title = json_file['short_title']
 
         self.project_status = json_file['project_status']
@@ -136,7 +135,6 @@ class Member_Project(Activity):
         #self.is_pending = True if self.json_file['is_pending'] == "true" else False
         #self.is_reviewer = True if self.json_file['is_reviewer'] == "true" else False
         #self.has_valid_proposal = True if self.json_file['has_valid_proposal'] == "true" else False --> is_validated?
-
 
     # geoloc
     def get_location(self):

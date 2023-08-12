@@ -94,7 +94,6 @@ class Reader(object):
 
         pass
         
-
     def same_member_peer_reviews(self, index):
         # Peer Reviews can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/peer_reviews
         # Refer to save_member_needs() function for instructions
