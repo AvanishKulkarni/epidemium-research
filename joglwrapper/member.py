@@ -112,7 +112,15 @@ class Member:
     def get_projects(self):
         # Refer to reader.py matching function
         # Refer to get_needs() for instructions
-        return []
+        directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/projects/{self.id}/')
+
+        projects_list = []
+
+        for file in os.listdir(directory):
+            with open(f'./joglwrapper/cache/{self.index}/users/projects/{self.id}/{file}', 'r', encoding='utf-8') as f:
+                projects_list.append(Member_Project(json.loads(f.read())))
+
+        return projects_list
 
     def __str__(self):
         return f'{self.first_name} {self.last_name} (id: {self.id})'

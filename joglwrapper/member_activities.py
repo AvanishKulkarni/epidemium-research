@@ -1,7 +1,6 @@
 import os
 import json
 
-
 class Activity:
     
     def __init__(self, json_file):
@@ -10,32 +9,6 @@ class Activity:
         self.type = "Unknown Activity"
         self.id = json_file['id']
         self.title = json_file['title']
-
-        self.description = ""
-
-class Proposal(Activity):
-
-    def __init__(self, json_file):
-        Activity.__init__(self, json_file)
-
-        self.type = "Proposal"
-        self.summary = json_file['summary']
-        
-        self.funding = json_file['funding']
-        self.project_id = json_file['project_id']
-        self.peer_review_id = json_file['peer_review_id']
-        self.score = json_file['score']
-
-        self.is_validated = True if self.json_file['is_validated'] == "true" else False
-
-    def get_skills(self):
-        skills = []
-        for skill in self.json_file['skills']:
-            skills.append(skill)
-
-        return skills
-
-    # Write functions or assign self variables to retrieve locally stored data
 
 class Need(Activity):
 
@@ -99,8 +72,46 @@ class Member_Project(Activity):
     def __init__(self, json_file):
         Activity.__init__(self, json_file)
         self.type = "Project"
+        
+        self.summary = json_file['short_description']
+        self.short_title = json_file['short_title']
 
-    # Write functions or assign self variables to retrieve locally stored data
+        self.status = json_file['status'] 
+
+        self.followers_count = json_file['followers_count']
+        self.is_private = json_file['is_private']
+        self.is_reviewed = json_file['is_reviewed']
+
+        self.members_count = json_file['members_count']
+        self.needs_count = json_file['needs_count']
+        self.posts_count = json_file['posts_count']
+        self.reviews_count = json_file['reviews_count']
+        self.saves = json_file['saves_count']
+
+        self.creator = f"{json_file['creator']['first_name']} {json_file['creator']['last_name']} (id: {json_file['creator']['id']})"
+   
+        self.has_valid_proposal = True if self.json_file['has_valid_proposal'] == "true" else False
+
+
+    def get_location(self):
+        return f"({self.raw_dict['geoloc']['lat']}, {self.raw_dict['geoloc']['lng']})"
+ 
+    def get_skills(self):
+        skills = []
+
+        for skill in self.json_file['skills']:
+            skills.append(skill)
+        return skills
+
+    def __str__(self):
+        return f'Project: {self.title}'
+    
+    def __repr__(self):
+        return f'project_{self.id}'
+    
+
+    
+
 
 class Challenge(Activity):
 
