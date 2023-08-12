@@ -12,7 +12,12 @@ output.generate_project(1, 'test')
 
 output.generate_all_users(1)
 
-output.generate_user(671, 'test')
+user = output.generate_user(671, 'test')
+
+
 
 project = Project(1)
 
+person = project.get_member(671)
+prj = person.get_projects()
+print(prj)

@@ -117,7 +117,22 @@ class Reader(object):
     def save_member_projects(self, index):
         # Projects can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/projects
         # Refer to save_member_needs() function for instructions
-        pass
+        
+        for member in os.listdir(f'./joglwrapper/cache/{index}/users/'):
+            member = member[:-5]
+
+            projects_path = f"https://jogl-backend.herokuapp.com/api/users/{member}/objects/projects"
+            projects_response = session.get(projects_path)
+
+            if projects_response.status_code == 200:
+                projects_json = projects_response.json()
+
+                if len(projects_json) > 0:
+                    
+                    for project in projects_json:
+                        Path(f'./joglwrapper/cache/{index}/users/projects/{member}/').mkdir(parents=True, exist_ok=True)
+                        with open(f'./joglwrapper/cache/{index}/users/projects/{member}/{project["id"]}.json', 'w', encoding='utf-8') as f:
+                            json.dump(project, f) 
 
     def save_all(self):
 
@@ -135,18 +150,4 @@ class Reader(object):
         if not is_empty: 
             return None
 
-        for member in os.listdir(f'./joglwrapper/cache/{index}/users/'):
-            member = member[:-5]
 
-            projects_path = f"https://jogl-backend.herokuapp.com/api/users/{member}/objects/projects"
-            projects_response = session.get(projects_path)
-
-            if projects_response.status_code == 200:
-                projects_json = projects_response.json()
-
-                if len(projects_json) > 0:
-                    
-                    for project in projects_json:
-                        Path(f'./joglwrapper/cache/{index}/users/projects/{member}/').mkdir(parents=True, exist_ok=True)
-                        with open(f'./joglwrapper/cache/{index}/users/projects/{member}/{project["id"]}.json', 'w', encoding='utf-8') as f:
-                            json.dump(need, f) 
