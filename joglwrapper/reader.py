@@ -48,7 +48,7 @@ class Reader(object):
                 member_json = response.json()
 
                 with open(f'./joglwrapper/cache/{index}/users/{member}.json', 'w', encoding='utf-8') as f:
-                    json.dump(member_json, f)         
+                    json.dump(member_json, f)
 
     # Completed
     def save_member_needs(self, index):
