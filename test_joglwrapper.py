@@ -15,8 +15,17 @@ output = Output()
 
 output.generate_meta()
 
-# net.add_nodes([1, 2, 3])
-# net.add_edge(1,2)
-# net.add_edge(3,2)
+net.add_nodes([1, 2, 3])
+net.add_edge(1,2)
+net.add_edge(3,2)
+
+# NOTE you can add infinite edges and it only adds one - makes it very easy
+for i in range(0, 1000):
+    net.add_edge(1,2)
+
+# TODO 
+# get list of all users
+# get list of all connections between users (shared activities)
+# generate graph from it to see how it looks
 
 net.show('test.html', notebook=False)
