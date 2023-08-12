@@ -132,6 +132,8 @@ class Member:
         activity_list += self.get_programs()
         activity_list += self.get_challenges()
 
+        
+
         if include_projects:
             activity_list += self.get_projects()
 

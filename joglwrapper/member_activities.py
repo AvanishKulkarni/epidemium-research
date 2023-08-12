@@ -10,6 +10,8 @@ class Activity:
         self.id = json_file['id']
         self.title = json_file['title']
 
+        self.summary = ""
+
 class Proposal(Activity):
 
     def __init__(self, json_file):
