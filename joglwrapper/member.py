@@ -84,6 +84,7 @@ class Member:
 
         try:
             for file in os.listdir(directory):
+                print(file)
                 with open(f'./joglwrapper/cache/{self.index}/users/proposals/{self.id}/{file}', 'r', encoding='utf-8') as f:
                     proposals_list.append(Proposal(json.loads(f.read())))
         finally:
@@ -124,15 +125,12 @@ class Member:
 
     def get_activities(self, include_projects=False) -> list[Activity]:
         activity_list = []
-
         activity_list += self.get_needs()
         activity_list += self.get_proposals()
         activity_list += self.get_peer_reviews()
         activity_list += self.get_spaces()
-        activity_list += self.get_programs()
+        activity_list += self.get_programs()        
         activity_list += self.get_challenges()
-
-        
 
         if include_projects:
             activity_list += self.get_projects()

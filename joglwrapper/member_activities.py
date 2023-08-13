@@ -71,6 +71,13 @@ class Need(Activity):
             skills.append(skill)
 
         return skills
+    
+    def __str__(self):
+        return f'Need: {self.title}'
+    
+    def __repr__(self):
+        return f'need_{self.id}'
+
 
     # Write functions or assign self variables to retrieve locally stored data
 
@@ -82,12 +89,23 @@ class Space(Activity):
 
     # Write functions or assign self variables to retrieve locally stored data
 
+    def __str__(self):
+        return f'Space: {self.title}'
+    
+    def __repr__(self):
+        return f'space_{self.id}'
+
 class Program(Activity):
 
     def __init__(self, json_file):
         Activity.__init__(self, json_file)
         self.type = "Program"
 
+    def __str__(self):
+        return f'Program: {self.title}'
+    
+    def __repr__(self):
+        return f'program_{self.id}'
     # Write functions or assign self variables to retrieve locally stored data
 
 class Peer_Review(Activity):
@@ -95,6 +113,12 @@ class Peer_Review(Activity):
     def __init__(self, json_file):
         Activity.__init__(self, json_file)
         self.type = "Peer Review"
+
+    def __str__(self):
+        return f'Peer Review: {self.title}'
+    
+    def __repr__(self):
+        return f'peer_review_{self.id}'
 
     # Write functions or assign self variables to retrieve locally stored data
 
@@ -145,5 +169,11 @@ class Challenge(Activity):
     def __init__(self, json_file):
         Activity.__init__(self, json_file)
         self.type = "Challenge"
+
+    def __str__(self):
+        return f'Challenge: {self.title}'
+    
+    def __repr__(self):
+        return f'challenge_{self.id}'
 
     # Write functions or assign self variables to retrieve locally stored data

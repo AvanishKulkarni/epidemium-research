@@ -27,7 +27,9 @@ net.barnes_hut(spring_length=1, spring_strength=0.1, damping=0.5, central_gravit
 for index in range(1, 7):
     project = Project(index)
 
-    net.add_node(n_id=index, 
+    # Node IDs for members and projects are negative to prevent index conflicts with activities
+
+    net.add_node(n_id=-1*index, 
                  label=f'Project {index}',
                  color='aqua',
                  mass=4,
@@ -37,13 +39,13 @@ for index in range(1, 7):
                  )
 
     for member in project.get_members():
-        net.add_node(n_id=member.id, 
+        net.add_node(n_id=-1*member.id, 
                      label=f'{str(member)}',
                      color='grey',
                      shape='diamond',
                      title=f'<p><b>{str(member)}</b></p><p>Affiliation: {member.affiliation}</p><p>Bio: {member.short_bio}</p>'
                      )
-        net.add_edge(member.id, index)
+        net.add_edge(-1*member.id, -1*index)
 
         for activity in member.get_activities():
 
@@ -52,6 +54,6 @@ for index in range(1, 7):
                          title=f"<p><b>{activity.type}: {activity.title}:</b></p><p>{activity.summary}</p>",
                          shape="circle",
                          color="green")
-            net.add_edge(member.id, activity.id)
+            net.add_edge(-1*member.id, activity.id)
 
-net.show('test.html', notebook=False)
+# net.show('test.html', notebook=False)
