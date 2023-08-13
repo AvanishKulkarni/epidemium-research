@@ -8,7 +8,8 @@ class Reader(object):
     
     def __init__(self):
         pass
-        
+
+    # Completed   
     def save_project(self, index):
         '''Generates and saves information on the project at index'''
 
@@ -27,6 +28,7 @@ class Reader(object):
                 with open(f'./joglwrapper/cache/{index}/info.json', 'w', encoding='utf-8') as f:
                     json.dump(project_info_response.json(), f)
 
+    # Completed
     def save_members(self, index):
         '''Generates and saves information on the members in project at index'''
         
@@ -86,13 +88,34 @@ class Reader(object):
     
     # Completed
         pass
-            
+
+    # Completed    
     def save_member_proposals(self, index):
         # Proposals can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/proposals
         # Has a tendency to be empty, but havent checked everything so make sure to check for that
         # Refer to save_member_needs() function for instructions
 
-        pass
+        Path(f'./joglwrapper/cache/{index}/users/proposals/').mkdir(parents=True, exist_ok=True)
+        is_empty = not any(Path(f'./joglwrapper/cache/{index}/users/proposals/').iterdir())
+
+        if not is_empty:
+            return None
+        
+        for member in os.listdir(f'./joglwrapper/cache/{index}/users/'):
+            member = member[:-5]
+
+            path = f"https://jogl-backend.herokuapp.com/api/users/{member}/objects/proposals"
+            response = session.get(path)
+
+            if response.status_code == 200:
+                response_json = response.json()
+
+                if len(response_json) > 0:
+                    
+                    for proposal in response_json:
+                        Path(f'./joglwrapper/cache/{index}/users/proposals/{member}/').mkdir(parents=True, exist_ok=True)
+                        with open(f'./joglwrapper/cache/{index}/users/proposals/{member}/{proposal["id"]}.json', 'w', encoding='utf-8') as f:
+                            json.dump(proposal, f) 
         
     def same_member_peer_reviews(self, index):
         # Peer Reviews can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/peer_reviews
@@ -109,10 +132,29 @@ class Reader(object):
         # Refer to save_member_needs() function for instructions
         pass
 
+    # Completed
     def save_member_challenges(self, index):
-        # Challenges can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/challenges
-        # Refer to save_member_needs() function for instructions
-        pass
+        Path(f'./joglwrapper/cache/{index}/users/challenges').mkdir(parents=True, exist_ok=True)
+        is_empty = not any(Path(f'./joglwrapper/cache/{index}/users/challenges/').iterdir())
+
+        if not is_empty:
+            return None
+        
+        for member in os.listdir(f'./joglwrapper/cache/{index}/users/'):
+            member = member[:-5]
+        
+            challenges_path = f"https://jogl-backend.herokuapp.com/api/users/{member}/objects/challenges"
+            challenges_response = session.get(challenges_path)
+
+            if challenges_response.status_code == 200:
+                    challenges_json = challenges_response.json()
+
+                    if len(challenges_json) > 0:
+                        
+                        for challenge in challenges_json:
+                            Path(f'./joglwrapper/cache/{index}/users/challenges/{member}/').mkdir(parents=True, exist_ok=True)
+                            with open(f'./joglwrapper/cache/{index}/users/challenges/{member}/{challenge["id"]}.json', 'w', encoding='utf-8') as f:
+                                json.dump(challenge, f)
 
     def save_member_projects(self, index):
         # Projects can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/projects

@@ -106,9 +106,15 @@ class Member:
         return []
 
     def get_challenges(self) -> list[Challenge]:
-        # Refer to reader.py matching function
-        # Refer to get_needs() for instructions
-        return []
+        directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/challenges/{self.id}/')
+
+        challenges_list = []
+
+        for file in os.listdir(directory):
+            with open(f'./joglwrapper/cache/{self.index}/users/challenges/{self.id}/{file}', 'r', encoding='utf-8') as f:
+                challenges_list.append(Challenge(json.loads(f.read())))
+
+        return challenges_list
 
     def get_projects(self) -> list[Member_Project]:
         # Refer to reader.py matching function
