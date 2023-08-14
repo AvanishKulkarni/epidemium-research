@@ -87,9 +87,6 @@ class Reader(object):
                             json.dump(need, f)     
     
     # Completed
-        pass
-
-    # Completed    
     def save_member_proposals(self, index):
         # Proposals can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/proposals
         # Has a tendency to be empty, but havent checked everything so make sure to check for that
@@ -147,19 +144,24 @@ class Reader(object):
             challenges_response = session.get(challenges_path)
 
             if challenges_response.status_code == 200:
-                    challenges_json = challenges_response.json()
+                challenges_json = challenges_response.json()
 
-                    if len(challenges_json) > 0:
-                        
-                        for challenge in challenges_json:
-                            Path(f'./joglwrapper/cache/{index}/users/challenges/{member}/').mkdir(parents=True, exist_ok=True)
-                            with open(f'./joglwrapper/cache/{index}/users/challenges/{member}/{challenge["id"]}.json', 'w', encoding='utf-8') as f:
-                                json.dump(challenge, f)
+                if len(challenges_json) > 0:
+                    
+                    for challenge in challenges_json:
+                        Path(f'./joglwrapper/cache/{index}/users/challenges/{member}/').mkdir(parents=True, exist_ok=True)
+                        with open(f'./joglwrapper/cache/{index}/users/challenges/{member}/{challenge["id"]}.json', 'w', encoding='utf-8') as f:
+                            json.dump(challenge, f)
 
     def save_member_projects(self, index):
         # Projects can be found at: https://jogl-backend.herokuapp.com/api/users/101/objects/projects
         # Refer to save_member_needs() function for instructions
-        
+        Path(f'./joglwrapper/cache/{index}/users/projects').mkdir(parents=True, exist_ok=True)
+        is_empty = not any(Path(f'./joglwrapper/cache/{index}/users/projects/').iterdir())
+
+        if not is_empty:
+            return None
+
         for member in os.listdir(f'./joglwrapper/cache/{index}/users/'):
             member = member[:-5]
 
@@ -187,9 +189,3 @@ class Reader(object):
             self.save_member_programs(index)
             self.save_member_challenges(index)
             self.save_member_projects(index)
-        Path(f'./joglwrapper/cache/{index}/users/projects').mkdir(parents=True, exist_ok=True)
-        is_empty = not any(Path(f'./joglwrapper/cache/{index}/users/projects/').iterdir())
-        if not is_empty: 
-            return None
-
-
