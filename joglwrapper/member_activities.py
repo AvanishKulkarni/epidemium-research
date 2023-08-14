@@ -71,20 +71,11 @@ class Space:
     def __init__(self, json_file):
         self.json_file = json_file
 
-
-class Challenge(Activity):
-
-    def __init__(self, json_file):
-        Activity.__init__(self, json_file)
-        self.type = "Challenge"
-
-        self.summary = json_file['title']
-        self.id = json_file['id']
-
 class Peer_Review:
 
     def __init__(self, json_file):
         self.json_file = json_file
+        self.type = "Peer Review"
 
     # Write functions or assign self variables to retrieve locally stored data
 
@@ -92,10 +83,11 @@ class Member_Project(Activity):
 
     def __init__(self, json_file):
         self.json_file = json_file
+        self.type = "Project"
 
     # Write functions or assign self variables to retrieve locally stored data
 
-class Challenge:
+class Challenge(Activity):
 
     def __init__(self, json_file):
         Activity.__init__(self, json_file)
