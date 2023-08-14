@@ -1,5 +1,6 @@
 from joglwrapper import Reader
 from joglwrapper import Project
+from joglwrapper import Output
 from pathlib import Path
 
 reader = Reader()
@@ -9,18 +10,29 @@ reader.save_project(5)
 reader.save_members(5)
 reader.save_project(3)
 reader.save_members(3)
-reader.save_member_needs(1)
-reader.save_member_needs(5)
-reader.save_member_needs(3)
+
+reader.save_member_proposals(1)
+reader.save_member_challenges(1)
+
+project1 = Project(1)
+
+PascalD = project1.get_member(7938)
+RachelA = project1.get_member(671)
+
+chal1 = RachelA.get_challenges()
+chal_47 = chal1[0]
+print(chal_47.description)
+
+#challenges = RachelA.get_challenges()
+
+'''
+output = Output()
+
+output.generate_project(1, 'test')
+
+output.generate_all_users(1)
+
+output.generate_user(671, 'test')
 
 project = Project(1)
-
-RachelA = project.get_member(671)
-print(RachelA)
-proposals = RachelA.get_proposals(1)
-print(proposals[0].title)
-
-
-needs = RachelA.get_needs()
-print(needs[0].get_skills())
-
+'''
