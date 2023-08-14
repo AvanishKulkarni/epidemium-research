@@ -10,16 +10,7 @@ class Activity:
         self.type = "Unknown Activity"
         self.id = json_file['id']
         self.title = json_file['title']
-
-        self.description = ""
-
-class Proposal(Activity):
-
-    def __init__(self, json_file):
-        Activity.__init__(self, json_file)
-
-        self.type = "Proposal"
-        self.summary = json_file['summary']
+        self.summary = json_file['summary'] 
         
         self.funding = json_file['funding']
         self.project_id = json_file['project_id']
@@ -53,56 +44,58 @@ class Need(Activity):
         self.saves = json_file['saves_count']
         self.posts = json_file['posts_count']
 
-        self.is_urgent = True if json_file['is_urgent'] == "true" else False
-        self.has_followed = True if json_file['has_followed'] == "true" else False
-        self.has_saved = True if json_file['has_saved'] == "true" else False
-        self.is_admin = True if json_file['is_admin'] == "true" else False
-        self.is_member = True if json_file['is_member'] == "true" else False
-        self.is_owner = True if json_file['is_owner'] == "true" else False
+        self.is_urgent = True if self.json_file['is_urgent'] == "true" else False
+        self.has_followed = True if self.json_file['has_followed'] == "true" else False
+        self.has_saved = True if self.json_file['has_saved'] == "true" else False
+        self.is_admin = True if self.json_file['is_admin'] == "true" else False
+        self.is_member = True if self.json_file['is_member'] == "true" else False
+        self.is_owner = True if self.json_file['is_owner'] == "true" else False
     
     def get_skills(self):
         skills = []
 
         for skill in self.json_file['skills']:
             skills.append(skill)
-
         return skills
+    
+    def __str__(self):
+        return f'Need: {self.title}'
+    
+    def __repr__(self):
+        return f'need_{self.id}'
 
     # Write functions or assign self variables to retrieve locally stored data
 
-class Space(Activity):
+class Space:
+
+    def __init__(self, json_file):
+        self.json_file = json_file
+
+
+class Challenge(Activity):
 
     def __init__(self, json_file):
         Activity.__init__(self, json_file)
-        self.type = "Space"
+        self.type = "Challenge"
 
-    # Write functions or assign self variables to retrieve locally stored data
+        self.summary = json_file['title']
+        self.id = json_file['id']
 
-class Program(Activity):
-
-    def __init__(self, json_file):
-        Activity.__init__(self, json_file)
-        self.type = "Program"
-
-    # Write functions or assign self variables to retrieve locally stored data
-
-class Peer_Review(Activity):
+class Peer_Review:
 
     def __init__(self, json_file):
-        Activity.__init__(self, json_file)
-        self.type = "Peer Review"
+        self.json_file = json_file
 
     # Write functions or assign self variables to retrieve locally stored data
 
 class Member_Project(Activity):
 
     def __init__(self, json_file):
-        Activity.__init__(self, json_file)
-        self.type = "Project"
+        self.json_file = json_file
 
     # Write functions or assign self variables to retrieve locally stored data
 
-class Challenge(Activity):
+class Challenge:
 
     def __init__(self, json_file):
         Activity.__init__(self, json_file)
