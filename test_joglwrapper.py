@@ -19,6 +19,10 @@ project1 = Project(1)
 PascalD = project1.get_member(7938)
 RachelA = project1.get_member(671)
 
+chal1 = RachelA.get_challenges()
+chal_47 = chal1[0]
+print(chal_47.description)
+
 #challenges = RachelA.get_challenges()
 
 '''

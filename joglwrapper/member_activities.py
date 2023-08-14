@@ -115,5 +115,5 @@ class Challenge(Activity):
         self.status = json_file['status']
         self.feed_id = json_file['feed_id']
 
-
+    
     # Write functions or assign self variables to retrieve locally stored data
