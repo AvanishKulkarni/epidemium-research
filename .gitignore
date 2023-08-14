@@ -6,3 +6,6 @@ test_joglwrapper.py
 
 
 *.pyc
+joglwrapper/__pycache__/project.cpython-311.pyc
+*.pyc
+test.html
