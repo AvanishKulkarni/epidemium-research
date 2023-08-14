@@ -10,6 +10,15 @@ class Activity:
         self.type = "Unknown Activity"
         self.id = json_file['id']
         self.title = json_file['title']
+        self.summary = ""
+
+    # Write functions or assign self variables to retrieve locally stored data
+
+class Proposal(Activity):
+
+    def __init__(self, json_file):
+        Activity.__init__()
+
         self.summary = json_file['summary'] 
         
         self.funding = json_file['funding']
@@ -19,12 +28,18 @@ class Activity:
 
         self.is_validated = True if self.json_file['is_validated'] == "true" else False
 
-    def get_skills(self):
+    def get_skills(self) -> list[str]:
         skills = []
         for skill in self.json_file['skills']:
             skills.append(skill)
 
         return skills
+    
+    def __str__(self):
+        return f'Proposal: {self.title}'
+    
+    def __repr__(self):
+        return f'proposal_{self.id}'
 
     # Write functions or assign self variables to retrieve locally stored data
 
