@@ -108,4 +108,12 @@ class Challenge(Activity):
         Activity.__init__(self, json_file)
         self.type = "Challenge"
 
+        self.summary = json_file['title']
+        self.id = json_file['id']
+
+        self.description = json_file['short_description']
+        self.status = json_file['status']
+        self.feed_id = json_file['feed_id']
+
+
     # Write functions or assign self variables to retrieve locally stored data
