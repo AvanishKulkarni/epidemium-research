@@ -9,3 +9,5 @@ test_joglwrapper.py
 joglwrapper/__pycache__/project.cpython-311.pyc
 *.pyc
 test.html
+*.pyc
+test.html
