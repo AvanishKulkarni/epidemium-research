@@ -12,6 +12,7 @@ class Activity:
 
         self.summary = ""
 
+# Completed
 class Proposal(Activity):
 
     def __init__(self, json_file):
@@ -41,6 +42,7 @@ class Proposal(Activity):
 
     # Write functions or assign self variables to retrieve locally stored data
 
+# Completed
 class Need(Activity):
 
     def __init__(self, json_file):
@@ -79,18 +81,30 @@ class Need(Activity):
 
     # Write functions or assign self variables to retrieve locally stored data
 
-class Space:
+
+class Space(Activity):
 
     def __init__(self, json_file):
-        self.json_file = json_file
+        Activity.__init__(self, json_file)
+        self.type = "Space"
 
-    # Write functions or assign self variables to retrieve locally stored data
+        self.summary = self.json_file['short_description']
+        self.status = self.json_file['status']
+
+        self.activities_count = self.json_file['activities_count']
+        self.challenges_count = self.json_file['challenges_count']
+        self.needs_count = self.json_file['needs_count']
+        self.projects_count = self.json_file['projects_count']
+
+        self.saves_count = self.json_file['saves_count']
+        self.members_count = self.json_file['members_count']
 
     def __str__(self):
         return f'Space: {self.title}'
     
     def __repr__(self):
         return f'space_{self.id}'
+
 
 class Program(Activity):
 
@@ -104,6 +118,7 @@ class Program(Activity):
     def __repr__(self):
         return f'program_{self.id}'
     # Write functions or assign self variables to retrieve locally stored data
+
 
 class Peer_Review(Activity):
 
@@ -119,6 +134,7 @@ class Peer_Review(Activity):
 
     # Write functions or assign self variables to retrieve locally stored data
 
+# Completed
 class Member_Project(Activity):
 
     def __init__(self, json_file):
@@ -160,6 +176,7 @@ class Member_Project(Activity):
     
     def __repr__(self):
         return f'project_{self.id}'
+
 
 class Challenge(Activity):
 
