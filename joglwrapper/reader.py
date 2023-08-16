@@ -256,3 +256,4 @@ class Reader(object):
             self.save_member_programs(index)
             self.save_member_challenges(index)
             self.save_member_projects(index)
+            self.same_member_peer_reviews(index)

@@ -85,7 +85,6 @@ class Member:
         return_list = []
         try:
             for file in os.listdir(directory):
-                print(file)
                 with open(f'./joglwrapper/cache/{self.index}/users/proposals/{self.id}/{file}', 'r', encoding='utf-8') as f:
                     return_list.append(Proposal(json.loads(f.read())))
         finally:
@@ -96,48 +95,48 @@ class Member:
         directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/peer_reviews/{self.id}/')
 
         return_list = []
-
-        for file in os.listdir(directory):
-            with open(f'./joglwrapper/cache/{self.index}/users/peer_reviews/{self.id}/{file}', 'r', encoding='utf-8') as f:
-                return_list.append(Peer_Review(json.loads(f.read())))
-
-        return return_list
+        try:
+            for file in os.listdir(directory):
+                with open(f'./joglwrapper/cache/{self.index}/users/peer_reviews/{self.id}/{file}', 'r', encoding='utf-8') as f:
+                    return_list.append(Peer_Review(json.loads(f.read())))
+        finally:
+            return return_list
     
     # Completed
     def get_spaces(self) -> list[Space]:
         directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/spaces/{self.id}/')
 
         return_list = []
-
-        for file in os.listdir(directory):
-            with open(f'./joglwrapper/cache/{self.index}/users/spaces/{self.id}/{file}', 'r', encoding='utf-8') as f:
-                return_list.append(Space(json.loads(f.read())))
-
-        return return_list
+        try:
+            for file in os.listdir(directory):
+                with open(f'./joglwrapper/cache/{self.index}/users/spaces/{self.id}/{file}', 'r', encoding='utf-8') as f:
+                    return_list.append(Space(json.loads(f.read())))
+        finally:
+            return return_list
     
     # Completed
     def get_programs(self) -> list[Program]:
         directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/programs/{self.id}/')
 
         return_list = []
-
-        for file in os.listdir(directory):
-            with open(f'./joglwrapper/cache/{self.index}/users/programs/{self.id}/{file}', 'r', encoding='utf-8') as f:
-                return_list.append(Program(json.loads(f.read())))
-
-        return return_list
+        try:
+            for file in os.listdir(directory):
+                with open(f'./joglwrapper/cache/{self.index}/users/programs/{self.id}/{file}', 'r', encoding='utf-8') as f:
+                    return_list.append(Program(json.loads(f.read())))
+        finally:
+            return return_list
 
     # Completed
     def get_challenges(self):
         directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/challenges/{self.id}/')
 
         return_list = []
-
-        for file in os.listdir(directory):
-            with open(f'./joglwrapper/cache/{self.index}/users/challenges/{self.id}/{file}', 'r', encoding='utf-8') as f:
-                return_list.append(Challenge(json.loads(f.read())))
-
-        return return_list
+        try:
+            for file in os.listdir(directory):
+                with open(f'./joglwrapper/cache/{self.index}/users/challenges/{self.id}/{file}', 'r', encoding='utf-8') as f:
+                    return_list.append(Challenge(json.loads(f.read())))
+        finally:
+            return return_list
 
     # Completed
     def get_projects(self) -> list[Member_Project]:
@@ -146,12 +145,12 @@ class Member:
         directory = os.fsdecode(f'./joglwrapper/cache/{self.index}/users/projects/{self.id}/')
 
         return_list = []
-
-        for file in os.listdir(directory):
-            with open(f'./joglwrapper/cache/{self.index}/users/projects/{self.id}/{file}', 'r', encoding='utf-8') as f:
-                return_list.append(Member_Project(json.loads(f.read())))
-
-        return return_list
+        try:
+            for file in os.listdir(directory):
+                with open(f'./joglwrapper/cache/{self.index}/users/projects/{self.id}/{file}', 'r', encoding='utf-8') as f:
+                    return_list.append(Member_Project(json.loads(f.read())))
+        finally:
+            return return_list
 
     # Completed
     def get_activities(self, include_projects=False) -> list[Activity]:

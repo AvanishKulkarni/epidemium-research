@@ -8,8 +8,8 @@ from pyvis.network import Network
 net = Network(height='1000px', width='100%', bgcolor='darkgrey')
 net.barnes_hut(spring_length=1, spring_strength=0.1, damping=0.5, central_gravity=0.7)
 
-reader = Reader()
-reader.save_all()
+# reader = Reader()
+# reader.save_all()
 
 # output = Output()
 # output.generate_meta()
