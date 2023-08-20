@@ -81,7 +81,7 @@ class Need(Activity):
 
     # Write functions or assign self variables to retrieve locally stored data
 
-
+# Completed
 class Space(Activity):
 
     def __init__(self, json_file):
@@ -105,7 +105,7 @@ class Space(Activity):
     def __repr__(self):
         return f'space_{self.id}'
 
-
+# Completed
 class Program(Activity):
 
     def __init__(self, json_file):
@@ -119,7 +119,7 @@ class Program(Activity):
         return f'program_{self.id}'
     # Write functions or assign self variables to retrieve locally stored data
 
-
+# Completed
 class Peer_Review(Activity):
 
     def __init__(self, json_file):
@@ -177,7 +177,7 @@ class Member_Project(Activity):
     def __repr__(self):
         return f'project_{self.id}'
 
-
+# Completed
 class Challenge(Activity):
 
     def __init__(self, json_file):
